@@ -1,0 +1,19 @@
+pt_BR:
+  devise:
+    sessions:
+      link: 'Login'
+      signed_in: 'Você está logado.'
+      signed_out: 'Você está deslogado.'
+      invalid: 'Login ou senha inválida.'
+    passwords:
+      link: 'Esqueceu a senha?'
+      send_instructions: 'Você receberá um email com instrucões sobre como resetar sua senha em alguns minutos.'
+      updated: 'Sua senha foi alterada com sucesso. Você está logado.'
+    registrations:
+      link: 'Cadastrar-se'
+      signed_up: 'Você já está cadastrado.'
+      updated: 'Sua conta foi atualizada.'
+      destroyed: 'Sua conta foi cancelada.'
+    mailer:
+      reset_password_instructions: 'Instrucões para resetar a senha'
+

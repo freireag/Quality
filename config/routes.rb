@@ -1,9 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   map.devise_for :users, :as => "usuarios", :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'cadastro', :password => 'senha'}
+  map.new_user_session 'login', :controller => :sessions, :action => :new, :conditions => {:method => :get}
+  map.user_session 'login', :controller => :sessions, :action => :create, :conditions => {:method => :post}
+  map.destroy_user_session 'logout', :controller => 'sessions', :action => 'destroy', :conditions => { :method => :get }
 
   map.resources :courses, :as => "cursos"
 
-  map.root :controller => :courses
+  map.root :controller => :sessions, :action => :new
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
