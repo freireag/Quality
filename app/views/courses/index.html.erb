@@ -16,7 +16,6 @@
     <td><%=h course.price %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -24,3 +23,4 @@
 <br />
 
 <%= link_to 'New course', new_course_path %>
+

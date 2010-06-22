@@ -19,6 +19,32 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </p>
+
+  <p>
+    <%= f.label :teoric_exams %><br />
+    <%= f.select :teoric_exams, 0..5 %>
+  </p>
+
+  <p>
+    <%= f.label :teoric_weight %><br />
+    <%= f.select :teoric_weight, 0..10 %>
+  </p>
+
+  <p>
+    <%= f.label :practical_exams %><br />
+    <%= f.select :practical_exams, 0..5 %>
+  </p>
+
+  <p>
+    <%= f.label :practical_weight %><br />
+    <%= f.select :practical_weight, 0..10 %>
+  </p>
+
+  <p>
+    <%= f.label :other_weight %><br />
+    <%= f.select :other_weight, 0..10 %>
+  </p>
+
   <p>
     <%= f.submit 'Update' %>
   </p>
@@ -26,3 +52,4 @@
 
 <%= link_to 'Show', @course %> |
 <%= link_to 'Back', courses_path %>
+
