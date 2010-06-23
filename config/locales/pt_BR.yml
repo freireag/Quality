@@ -175,6 +175,7 @@ pt_BR:
         password: "Senha"
         password_confirmation: "Confime sua Senha"
         current_password: "Senha Atual"
+        role: "Tipo"
       course:
         name: "Nome"
         code: "Código"

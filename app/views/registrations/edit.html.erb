@@ -21,6 +21,9 @@
   <p><%= f.label :current_password %> <i>(Sua senha atual &eacute; necess&aacute;ria)</i></p>
   <p><%= f.password_field :current_password %></p>
 
+  <p><%= f.label :role %></p>
+  <p><%= f.collection_select :role, User::ROLES, :to_s, :humanize %></p>
+
   <p><%= f.submit "Atualizar" %></p>
 <% end -%>
 

@@ -15,12 +15,16 @@
     <td><%=h course.credit_hours %></td>
     <td><%=h course.price %></td>
     <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    <% if can? :update, course %>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New course', new_course_path %>
+<% if can? :create, @courses %>
+  <%= link_to 'New course', new_course_path %>
+<% end %>
 

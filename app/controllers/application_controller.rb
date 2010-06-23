@@ -11,5 +11,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     courses_path
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+      flash[:error] = "Você não está autorizado a acessar essa página."
+      redirect_to root_url
+    end
 end
 
