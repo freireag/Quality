@@ -1,4 +1,6 @@
 class CourseClassesController < ApplicationController
+  load_and_authorize_resource
+
   # GET /course_classes
   # GET /course_classes.xml
   def index
@@ -81,3 +83,4 @@ class CourseClassesController < ApplicationController
     end
   end
 end
+
