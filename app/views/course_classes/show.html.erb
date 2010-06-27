@@ -1,0 +1,28 @@
+<p>
+  <b>Start time:</b>
+  <%=h @course_class.start_time %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @course_class.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%=h @course_class.end_date %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%=h @course_class.course %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @course_class.city %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_class_path(@course_class) %> |
+<%= link_to 'Back', course_classes_path %>

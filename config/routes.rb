@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :course_classes, :as => "turmas"
+
   map.devise_for :users, :as => "usuarios", :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'cadastro', :password => 'senha'}
   map.new_user_session 'login', :controller => :sessions, :action => :new, :conditions => {:method => :get}
   map.user_session 'login', :controller => :sessions, :action => :create, :conditions => {:method => :post}

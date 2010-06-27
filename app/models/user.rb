@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_length_of :password, :within => 6..20, :allow_blank => true
 
-  def admin?
-    self.role == "admin"
+  def role?(role)
+    self.role == role.to_s
   end
 end
 

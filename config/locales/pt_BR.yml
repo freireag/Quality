@@ -186,4 +186,12 @@ pt_BR:
         practical_exams: "Avaliação Prática: Avaliações"
         practical_weight: "Avaliação Prática: Peso"
         other_weight: "Conceito: Peso"
+      course_class:
+        start_time: "Horário"
+        start_date: "Início Previsto"
+        end_date: "Término Previsto"
+        code: "Código"
+        weekdays: "Dias"
+        course: "Curso"
+        city: "Cidade"
 

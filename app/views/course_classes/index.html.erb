@@ -1,0 +1,31 @@
+<h1>Listing course_classes</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Start time</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Course</th>
+    <th>City</th>
+  </tr>
+
+<% @course_classes.each do |course_class| %>
+  <tr>
+    <td><%=h course_class.code %></td>
+    <td><%=h course_class.start_time %></td>
+    <td><%=h course_class.start_date %></td>
+    <td><%=h course_class.end_date %></td>
+    <td><%=h course_class.course.name %></td>
+    <td><%=h course_class.city.name %></td>
+    <td><%= link_to 'Show', course_class %></td>
+    <td><%= link_to 'Edit', edit_course_class_path(course_class) %></td>
+    <td><%= link_to 'Destroy', course_class, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New course_class', new_course_class_path %>
+
