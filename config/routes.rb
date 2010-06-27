@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.user_session 'login', :controller => :sessions, :action => :create, :conditions => {:method => :post}
   map.destroy_user_session 'logout', :controller => 'sessions', :action => 'destroy', :conditions => { :method => :get }
 
+  map.resources :users, :as => "usuarios"
+
   map.resources :courses, :as => "cursos"
 
   map.root :controller => :sessions, :action => :new
