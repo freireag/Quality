@@ -12,6 +12,14 @@
 <p style="color: green"><%= notice %></p>
 <p style="color: red"><%= flash[:error] %></p>
 
+<p>
+<% if current_user %>
+  Bem vindo <%=h current_user.name %>.
+  <%= link_to "Sair", destroy_user_session_path %> |
+  <%= link_to "Alterar Conta", edit_user_registration_path %>
+<% end %>
+</p>
+
 <%= yield %>
 
 </body>
