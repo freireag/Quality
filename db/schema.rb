@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100626231517) do
+ActiveRecord::Schema.define(:version => 20100627212712) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(:version => 20100626231517) do
     t.string   "role"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
