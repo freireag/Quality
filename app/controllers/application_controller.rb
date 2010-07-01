@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     courses_path
   end
 
+  def current_ability
+    if student_signed_in?
+      @current_ability ||= StudentAbility.new(current_student)
+    else
+      @current_ability ||= Ability.new(current_user)
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
       flash[:error] = "Você não está autorizado a acessar essa página."
       redirect_to root_url

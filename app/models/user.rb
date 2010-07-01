@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :within => 6..20, :allow_blank => true
-  validates_presence_of :current_password, :on => :update
+  #validates_presence_of :current_password, :on => :update
 
   def role?(role)
     self.role == role.to_s

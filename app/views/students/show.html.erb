@@ -1,0 +1,44 @@
+<p>
+  <b>Name:</b>
+  <%=h @student.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @student.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @student.phone %>
+</p>
+
+<p>
+  <b>Rg:</b>
+  <%=h @student.rg %>
+</p>
+
+<p>
+  <b>Cpf:</b>
+  <%=h @student.cpf %>
+</p>
+
+<p>
+  <b>Birthplace:</b>
+  <%=h @student.birthplace %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%=h @student.birthdate %>
+</p>
+
+<p>
+  <b>Marital Status:</b>
+  <%=h @student.marital_status %>
+</p>
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
+

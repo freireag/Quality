@@ -18,16 +18,9 @@
   <p><%= f.label :password_confirmation %></p>
   <p><%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>(Sua senha atual &eacute; necess&aacute;ria)</i></p>
-  <p><%= f.password_field :current_password %></p>
-
   <p><%= f.label :role %></p>
   <p><%= f.collection_select :role, User::ROLES, :to_s, :humanize %></p>
 
   <p><%= f.submit "Atualizar" %></p>
 <% end -%>
-
-<h3>Deletar Conta</h3>
-
-<p><%= link_to "Deletar minha conta", user_path(@user), :confirm => "Tem certeza?", :method => :delete %>.</p>
 

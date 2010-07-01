@@ -1,0 +1,50 @@
+<h1>Editing student</h1>
+
+<% form_for(@student) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :rg %><br />
+    <%= f.text_field :rg %>
+  </p>
+  <p>
+    <%= f.label :cpf %><br />
+    <%= f.text_field :cpf %>
+  </p>
+  <p>
+    <%= f.label :birthplace %><br />
+    <%= f.text_field :birthplace %>
+  </p>
+  <p>
+    <%= f.label :birthdate %><br />
+    <%= f.date_select :birthdate %>
+  </p>
+  <p>
+    <%= f.label :marital_status %><br />
+    <%= f.text_field :marital_status %>
+  </p>
+  <p><%= f.label :password %> <i>(deixe em branco se n&atilde;o quiser mudar)</i></p>
+  <p><%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @student %> |
+<%= link_to 'Back', students_path %>
+
