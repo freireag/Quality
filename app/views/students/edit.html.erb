@@ -1,4 +1,4 @@
-<h1>Editing student</h1>
+<h1>Editando estudante</h1>
 
 <% form_for(@student) do |f| %>
   <%= f.error_messages %>
@@ -41,10 +41,10 @@
   <p><%= f.label :password_confirmation %></p>
   <p><%= f.password_field :password_confirmation %></p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Atualizar' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %>
+<%= link_to 'Visualizar', @student %> |
+<%= link_to 'Voltar', students_path %>
 

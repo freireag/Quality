@@ -1,4 +1,4 @@
-<h1>New student</h1>
+<h1>Novo estudante</h1>
 
 <% form_for(@student) do |f| %>
   <%= f.error_messages %>
@@ -29,16 +29,16 @@
   </p>
   <p>
     <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate %>
+    <%= f.date_select :birthdate, :start_year => 1900, :end_year => 2000 %>
   </p>
   <p>
     <%= f.label :marital_status %><br />
     <%= f.text_field :marital_status %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Cadastrar' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', students_path %>
+<%= link_to 'Voltar', students_path %>
 

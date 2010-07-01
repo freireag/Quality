@@ -1,4 +1,6 @@
-<h2>Login</h2>
+<h2>Alunos</h2>
+
+<p>Se você é administrador ou funcionário, faça login <%= link_to "aqui", new_user_session_path %>.</p>
 
 <% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
   <p><%= f.label :cpf %></p>

@@ -1,28 +1,30 @@
 <p>
-  <b>Start time:</b>
+  <b>Horário:</b>
   <%=h @course_class.start_time %>
 </p>
 
 <p>
-  <b>Start date:</b>
+  <b>Início Previsto:</b>
   <%=h @course_class.start_date %>
 </p>
 
 <p>
-  <b>End date:</b>
+  <b>Término Previsto:</b>
   <%=h @course_class.end_date %>
 </p>
 
 <p>
-  <b>Course:</b>
+  <b>Curso:</b>
   <%=h @course_class.course %>
 </p>
 
 <p>
-  <b>City:</b>
+  <b>Cidade:</b>
   <%=h @course_class.city %>
 </p>
 
+<% if can? :update, @course_class %>
+  <%= link_to 'Editar', edit_course_class_path(@course_class) %> |
+<% end %>
+<%= link_to 'Voltar', course_classes_path %>
 
-<%= link_to 'Edit', edit_course_class_path(@course_class) %> |
-<%= link_to 'Back', course_classes_path %>

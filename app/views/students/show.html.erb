@@ -1,5 +1,5 @@
 <p>
-  <b>Name:</b>
+  <b>Nome:</b>
   <%=h @student.name %>
 </p>
 
@@ -9,36 +9,37 @@
 </p>
 
 <p>
-  <b>Phone:</b>
+  <b>Telefone:</b>
   <%=h @student.phone %>
 </p>
 
 <p>
-  <b>Rg:</b>
+  <b>RG:</b>
   <%=h @student.rg %>
 </p>
 
 <p>
-  <b>Cpf:</b>
+  <b>CPF:</b>
   <%=h @student.cpf %>
 </p>
 
 <p>
-  <b>Birthplace:</b>
+  <b>Naturalidade:</b>
   <%=h @student.birthplace %>
 </p>
 
 <p>
-  <b>Birthdate:</b>
+  <b>Data de Nascimento:</b>
   <%=h @student.birthdate %>
 </p>
 
 <p>
-  <b>Marital Status:</b>
+  <b>Estado Civil:</b>
   <%=h @student.marital_status %>
 </p>
 
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<% if can? :update, @student %>
+  <%= link_to 'Editar', edit_student_path(@student) %> |
+<% end %>
+<%= link_to 'Voltar', students_path %>
 

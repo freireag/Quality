@@ -15,9 +15,20 @@ test:
   pool: 5
   timeout: 5000
 
+<%
+def mysql_password
+        f = File.new("../.my.cnf")
+        f.readlines[2].split(" = ").last.chomp
+end
+%>
+
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: quality
   pool: 5
-  timeout: 5000
+  username: rails
+  password: <%= mysql_password %>
+  socket: /var/run/mysqld/mysqld.sock
 

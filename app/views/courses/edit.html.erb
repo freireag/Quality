@@ -1,4 +1,4 @@
-<h1>Editing course</h1>
+<h1>Editando curso</h1>
 
 <% form_for(@course) do |f| %>
   <%= f.error_messages %>
@@ -46,10 +46,10 @@
   </p>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Atualizar' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Visualizar', @course %> |
+<%= link_to 'Voltar', courses_path %>
 

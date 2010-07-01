@@ -1,0 +1,31 @@
+<h1>Listando cities</h1>
+
+<table>
+  <tr>
+    <th>Estado</th>
+    <th>Nome</th>
+    <th>Código</th>
+  </tr>
+
+<% @cities.each do |city| %>
+  <tr>
+    <td><%=h city.state %></td>
+    <td><%=h city.name %></td>
+    <td><%=h city.code %></td>
+    <td><%= link_to 'Visualizar', city %></td>
+    <% if can? :update, city %>
+      <td><%= link_to 'Editar', edit_city_path(city) %></td>
+    <% end %>
+    <% if can? :destroy, city %>
+      <td><%= link_to 'Remover', city, :confirm => 'Tem certeza?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if can? :create, @cities %>
+  <%= link_to 'Nova cidade', new_city_path %>
+<% end %>
+

@@ -194,4 +194,19 @@ pt_BR:
         weekdays: "Dias"
         course: "Curso"
         city: "Cidade"
+      student:
+        name: "Nome"
+        phone: "Telefone"
+        rg: "RG"
+        cpf: "CPF"
+        birthplace: "Naturalidade"
+        birthdate: "Data de Nascimento"
+        marital_status: "Estado Civil"
+        password: "Senha"
+        password_confirmation: "Confime sua Senha"
+        current_password: "Senha Atual"
+      city:
+        name: "Nome"
+        state: "Estado"
+        code: "Código"
 

@@ -1,0 +1,9 @@
+/*#menu ul {list-style-type: none; margin: 0; padding: 0}
+#menu ul li {display: inline;}
+#menu ul li a {float: left; width: 80px; text-align: center;}
+.clear {clear: both;}*/
+
+#menu {width: 150px; float: left; padding-top: 60px;}
+#menu ul {list-style-type: none;}
+#main {float: left;}
+

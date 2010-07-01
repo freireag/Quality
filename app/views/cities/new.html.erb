@@ -1,0 +1,24 @@
+<h1>Nova cidade</h1>
+
+<% form_for(@city) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :state %><br />
+    <%= f.collection_select :state, City::STATES, :to_s, :to_s %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </p>
+  <p>
+    <%= f.submit 'Cadastrar' %>
+  </p>
+<% end %>
+
+<%= link_to 'Voltar', cities_path %>
+

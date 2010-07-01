@@ -1,13 +1,13 @@
-<h1>Listing course_classes</h1>
+<h1>Listando turmas</h1>
 
 <table>
   <tr>
-    <th>Code</th>
-    <th>Start time</th>
-    <th>Start date</th>
-    <th>End date</th>
-    <th>Course</th>
-    <th>City</th>
+    <th>Código</th>
+    <th>Horário</th>
+    <th>Início Previsto</th>
+    <th>Término Previsto</th>
+    <th>Curso</th>
+    <th>Cidade</th>
   </tr>
 
 <% @course_classes.each do |course_class| %>
@@ -18,14 +18,20 @@
     <td><%=h course_class.end_date %></td>
     <td><%=h course_class.course.name %></td>
     <td><%=h course_class.city.name %></td>
-    <td><%= link_to 'Show', course_class %></td>
-    <td><%= link_to 'Edit', edit_course_class_path(course_class) %></td>
-    <td><%= link_to 'Destroy', course_class, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Visalizar', course_class %></td>
+    <% if can? :update, course_class %>
+      <td><%= link_to 'Editar', edit_course_class_path(course_class) %></td>
+    <% end %>
+    <% if can? :destroy, course_class %>
+      <td><%= link_to 'Remover', course_class, :confirm => 'Tem certeza?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New course_class', new_course_class_path %>
+<% if can? :create, @course_classes %>
+  <%= link_to 'Nova turma', new_course_class_path %>
+<% end %>
 

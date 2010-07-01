@@ -1,0 +1,20 @@
+<p>
+  <b>Estado:</b>
+  <%=h @city.state %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%=h @city.name %>
+</p>
+
+<p>
+  <b>Código:</b>
+  <%=h @city.code %>
+</p>
+
+<% if can? :update, @city %>
+  <%= link_to 'Editar', edit_city_path(@city) %> |
+<% end %>
+<%= link_to 'Voltar', cities_path %>
+

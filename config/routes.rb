@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :cities, :as => "cidades"
+
   map.devise_for :students, :as => "alunos", :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'cadastro', :password => 'senha'}
 
   map.resources :students, :as => "alunos"

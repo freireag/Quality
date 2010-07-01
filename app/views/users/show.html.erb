@@ -1,5 +1,5 @@
 <p>
-  <b>Name:</b>
+  <b>Nome:</b>
   <%=h @user.name %>
 </p>
 
@@ -13,12 +13,12 @@
   <%=h @user.email %>
 </p>
 
-<p>Role:</b>
+<p>Tipo:</b>
   <%=h @user.role %>
 </p>
 
 <% if can? :update, @user %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Editar', edit_user_path(@user) %> |
 <% end %>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Voltar', users_path %>
 

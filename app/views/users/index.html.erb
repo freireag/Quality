@@ -1,11 +1,11 @@
-<h1>Listing users</h1>
+<h1>Listando usuários</h1>
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Nome</th>
     <th>Login</th>
     <th>Email</th>
-    <th>Role</th>
+    <th>Tipo</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -14,12 +14,12 @@
     <td><%=h user.login %></td>
     <td><%=h user.email %></td>
     <td><%=h user.role %></td>
-    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Visualizar', user %></td>
     <% if can? :update, user %>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Editar', edit_user_path(user) %></td>
     <% end %>
     <% if can? :destroy, user %>
-      <td><%= link_to 'Destroy', user_path(user), :confirm => "Tem certeza?", :method => :delete %></td>
+      <td><%= link_to 'Remover', user_path(user), :confirm => "Tem certeza?", :method => :delete %></td>
     <% end %>
   </tr>
 <% end %>
@@ -28,6 +28,6 @@
 <br />
 
 <% if can? :create, @users %>
-  <%= link_to 'New user', new_user_path %>
+  <%= link_to 'Novo usuário', new_user_path %>
 <% end %>
 

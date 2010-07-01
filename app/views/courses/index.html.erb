@@ -1,11 +1,11 @@
-<h1>Listing courses</h1>
+<h1>Listando cursos</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Code</th>
-    <th>Credit hours</th>
-    <th>Price</th>
+    <th>Nome</th>
+    <th>Código</th>
+    <th>Carga Horária</th>
+    <th>Preço</th>
   </tr>
 
 <% @courses.each do |course| %>
@@ -14,9 +14,9 @@
     <td><%=h course.code %></td>
     <td><%=h course.credit_hours %></td>
     <td><%=h course.price %></td>
-    <td><%= link_to 'Show', course %></td>
+    <td><%= link_to 'Visualizar', course %></td>
     <% if can? :update, course %>
-      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Editar', edit_course_path(course) %></td>
     <% end %>
   </tr>
 <% end %>
@@ -25,6 +25,6 @@
 <br />
 
 <% if can? :create, @courses %>
-  <%= link_to 'New course', new_course_path %>
+  <%= link_to 'Novo curso', new_course_path %>
 <% end %>
 

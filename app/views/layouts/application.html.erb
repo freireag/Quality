@@ -6,6 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Quality</title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'style' %>
 </head>
 <body>
 
@@ -13,13 +14,31 @@
 <p style="color: red"><%= flash[:error] %></p>
 
 <p>
-<% if current_user %>
+<% if user_signed_in? %>
   Bem vindo <%=h current_user.name %>.
   <%= link_to "Sair", destroy_user_session_path %>
+ <% elsif student_signed_in? %>
+  Bem vindo <%=h current_student.name %>.
+  <%= link_to "Sair", destroy_student_session_path %>
 <% end %>
 </p>
 
+<% if user_signed_in? or student_signed_in? %>
+<div id="menu">
+  <ul>
+    <li><%= link_to "Cursos", courses_path %></li>
+    <li><%= link_to "Turmas", course_classes_path %></li>
+    <li><%= link_to "Cidades", cities_path %></li>
+    <li><%= link_to "Usuários", users_path %></li>
+    <li><%= link_to "Alunos", students_path %></li>
+  </ul>
+</div>
+<div class="clear"></div>
+<% end %>
+
+<div id="main"">
 <%= yield %>
+</div>
 
 </body>
 </html>
