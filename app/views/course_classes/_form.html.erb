@@ -1,0 +1,47 @@
+<% form_for(@course_class) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :start_time %><br />
+    <%= f.time_select :start_time %>
+  </p>
+  <p>
+    <%= f.label :end_time %><br />
+    <%= f.time_select :end_time %>
+  </p>
+  <p>
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </p>
+  <p>
+    <%= f.label :end_date %><br />
+    <%= f.date_select :end_date %>
+  </p>
+  <p>
+    <%= f.label :course %><br />
+    <%= f.collection_select (:course_id, Course.all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.collection_select (:city_id, City.ordered_by_state, :id, :name_with_state) %>
+  </p>
+  <p>
+    <%= f.label :weekdays %><br />
+    <% for day in CourseClass::WEEKDAYS %>
+    <%= check_box_tag "course_class[weekdays][]", day, @course_class.weekdays.include?(day) %>
+      <%=h day.humanize %><br />
+    <% end %>
+  </p>
+  <p>
+    <%= f.label :observation %><br />
+    <%= f.text_area :observation %>
+  </p>
+  <p>
+    <%= f.submit 'Cadastrar' %>
+  </p>
+<% end %>
+

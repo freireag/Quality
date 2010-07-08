@@ -6,7 +6,7 @@ class CourseClass < ActiveRecord::Base
 
   validates_presence_of :course, :start_time, :start_date, :end_date
 
-  before_create :ensure_end_date_is_after_start_date
+  before_create :ensure_end_date_is_after_start_date, :ensure_end_time_is_after_start_time
   after_create :generate_code
 
   def weekdays=(days)
@@ -27,18 +27,25 @@ class CourseClass < ActiveRecord::Base
     end
   end
 
+  def ensure_end_time_is_after_start_time
+    if end_time <= start_time
+      errors.add :end_time, "não pode ser menor ou igual ao horário de início."
+      false
+    end
+  end
+
   def generate_code
-    self.code = "#{self.course.code}.#{generate_3_numbered_id}-#{self.start_date.year}.#{self.city.code}"
+    self.code = "#{self.course.code}.#{generate_3_numbered_number}-#{self.start_date.year}.#{self.city.code}"
     self.save
   end
 
-  def generate_3_numbered_id
-    if self.id < 10
-      "00" + self.id.to_s
-    elsif self.id < 100
-      "0" + self.id.to_s
+  def generate_3_numbered_number
+    if self.number < 10
+      "00" + self.number.to_s
+    elsif self.number < 100
+      "0" + self.number.to_s
     else
-      self.id.to_s
+      self.number.to_s
     end
   end
 end

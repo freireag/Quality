@@ -187,13 +187,16 @@ pt_BR:
         practical_weight: "Avaliação Prática: Peso"
         other_weight: "Conceito: Peso"
       course_class:
-        start_time: "Horário"
+        number: "Número"
+        start_time: "Horário de Início"
+        end_time: "Horário de Término"
         start_date: "Início Previsto"
         end_date: "Término Previsto"
         code: "Código"
         weekdays: "Dias"
         course: "Curso"
         city: "Cidade"
+        observation: "Observação"
       student:
         name: "Nome"
         phone: "Telefone"

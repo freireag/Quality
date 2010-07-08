@@ -13,16 +13,6 @@
 <p style="color: green"><%= notice %></p>
 <p style="color: red"><%= flash[:error] %></p>
 
-<p>
-<% if user_signed_in? %>
-  Bem vindo <%=h current_user.name %>.
-  <%= link_to "Sair", destroy_user_session_path %>
- <% elsif student_signed_in? %>
-  Bem vindo <%=h current_student.name %>.
-  <%= link_to "Sair", destroy_student_session_path %>
-<% end %>
-</p>
-
 <% if user_signed_in? or student_signed_in? %>
 <div id="menu">
   <ul>
@@ -37,7 +27,18 @@
 <% end %>
 
 <div id="main"">
+<p>
+<% if user_signed_in? %>
+  Bem vindo <%=h current_user.name %>.
+  <%= link_to "Sair", destroy_user_session_path %>
+ <% elsif student_signed_in? %>
+  Bem vindo <%=h current_student.name %>.
+  <%= link_to "Sair", destroy_student_session_path %>
+<% end %>
+</p>
+
 <%= yield %>
+
 </div>
 
 </body>
