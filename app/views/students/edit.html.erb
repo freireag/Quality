@@ -33,7 +33,7 @@
   </p>
   <p>
     <%= f.label :marital_status %><br />
-    <%= f.text_field :marital_status %>
+    <%= f.select :marital_status, Student::MARITAL_STATUS.invert %>
   </p>
   <p><%= f.label :password %> <i>(deixe em branco se n&atilde;o quiser mudar)</i></p>
   <p><%= f.password_field :password %></p>
