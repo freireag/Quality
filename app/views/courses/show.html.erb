@@ -18,6 +18,12 @@
   <%=h @course.price %>
 </p>
 
+<% @course.admin_files.each do |file| %>
+  <p>
+    <%= link_to h(file.title_or_name), file.attachment.url %> |
+    <%=h file.attachment_updated_at.strftime("%d/%m/%Y") %>
+  </p>
+<% end %>
 <% if can? :update, @course %>
   <%= link_to 'Editar', edit_course_path(@course) %> |
 <% end %>

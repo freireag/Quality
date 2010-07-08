@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
   has_many :course_classes
+  has_many :admin_files
 
   validates_presence_of :name, :code, :credit_hours, :price
   validates_uniqueness_of :code

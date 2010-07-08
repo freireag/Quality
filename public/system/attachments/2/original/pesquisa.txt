@@ -1,0 +1,11 @@
+- Devise http://github.com/plataformatec/devise
+- CanCan http://github.com/ryanb/cancan
+- Paperclip http://github.com/thoughtbot/paperclip
+- will_paginate http://wiki.github.com/mislav/will_paginate
+- rails_indexes http://github.com/eladmeidar/rails_indexes
+- acts_as_audited http://wiki.github.com/collectiveidea/acts_as_audited
+
+- Brazilian Rails http://github.com/tapajos/brazilian-rails
+- formtastic http://github.com/justinfrench/formtastic
+- Moonshine e Capistrano http://github.com/railsmachine/moonshine
+- RSpec

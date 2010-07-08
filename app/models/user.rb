@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin funcionario aluno]
 
+  has_many :admin_files
+
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable, :validatable, :registerable and :activatable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable

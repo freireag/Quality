@@ -4,7 +4,8 @@ class CourseClass < ActiveRecord::Base
   belongs_to :course
   belongs_to :city
 
-  validates_presence_of :course, :start_time, :start_date, :end_date
+  validates_presence_of :course, :start_time, :start_date, :end_date, :number
+  validates_numericality_of :number, :greater_than => 0
 
   before_create :ensure_end_date_is_after_start_date, :ensure_end_time_is_after_start_time
   after_create :generate_code
