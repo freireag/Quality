@@ -1,0 +1,23 @@
+<p>
+  <b>Day:</b>
+  <%=h @frequency.day %>
+</p>
+
+<p>
+  <b>Course class:</b>
+  <%=h @frequency.course_class %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%=h @frequency.student %>
+</p>
+
+<p>
+  <b>Presence:</b>
+  <%=h @frequency.presence %>
+</p>
+
+
+<%= link_to 'Edit', edit_frequency_path(@frequency) %> |
+<%= link_to 'Back', frequencies_path %>

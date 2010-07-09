@@ -1,0 +1,28 @@
+<h1>Editing frequency</h1>
+
+<% form_for(@frequency) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :day %><br />
+    <%= f.date_select :day %>
+  </p>
+  <p>
+    <%= f.label :course_class %><br />
+    <%= f.text_field :course_class %>
+  </p>
+  <p>
+    <%= f.label :student %><br />
+    <%= f.text_field :student %>
+  </p>
+  <p>
+    <%= f.label :presence %><br />
+    <%= f.check_box :presence %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @frequency %> |
+<%= link_to 'Back', frequencies_path %>

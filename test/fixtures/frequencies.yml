@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  day: 2010-07-09
+  course_class: 
+  student: 
+  presence: false
+
+two:
+  day: 2010-07-09
+  course_class: 
+  student: 
+  presence: false

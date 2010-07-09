@@ -1,4 +1,4 @@
-<h1>Listando estudantes
+<h1>Listando alunos
 <% if @course_class %>
   de <%= @course_class.code %>
 <% end %>
@@ -41,6 +41,6 @@
 <br />
 
 <% if can? :create, @students %>
-  <%= link_to 'Novo estudante', new_student_path %>
+  <%= link_to 'Novo aluno', new_student_path %>
 <% end %>
 

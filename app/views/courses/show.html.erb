@@ -18,6 +18,8 @@
   <%=h @course.price %>
 </p>
 
+<h2>Arquivos</h2>
+
 <% @course.admin_files.each do |file| %>
   <p>
     <%= link_to h(file.title_or_name), file.attachment.url %> |

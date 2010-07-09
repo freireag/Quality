@@ -1,0 +1,29 @@
+<h1>Listando frequências
+<% if @course_class %>
+  de <%= @course_class.code %>
+<% end %>
+</h1>
+
+<table>
+  <tr>
+    <th>Dia</th>
+    <th>Curso</th>
+    <th>Aluno</th>
+    <th>Presenca</th>
+  </tr>
+
+<% @frequencies.each do |frequency| %>
+  <tr>
+    <td><%=h frequency.day %></td>
+    <td><%=h frequency.course_class.course.name %></td>
+    <td><%=h frequency.student.name %></td>
+    <td><%=h frequency.presence ? "Sim" : "Não" %></td>
+    <td><%= link_to 'Remover', frequency, :confirm => 'Tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Cadastrar Frequências', new_course_class_frequency_path(@course_class) %>
+

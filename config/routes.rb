@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :frequencies, :as => "frequencias"
+
   map.resources :student_classes
 
   map.resources :admin_files, :as => "arquivos"
@@ -13,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :course_classes, :as => "turmas" do |course_class|
     course_class.resources :students, :as => "alunos"
+    course_class.resources :frequencies, :as => "frequencias"
   end
 
   map.devise_for :users, :as => "usuarios", :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'cadastro', :password => 'senha'}

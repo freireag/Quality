@@ -1,0 +1,29 @@
+<h1>Cadastrar frequência da turma <%= @course_class.code %></h1>
+
+<% unless @course_class.running? %>
+  <p>O curso ainda não comecou ou já terminou.</p>
+<% else %>
+
+  <table>
+    <tr>
+    <th></th>
+    <% @days.each do |day| %>
+      <th><%= day.strftime("%d/%m (%a)") %></th>
+    <% end %>
+    </tr>
+    <% @course_class.students.each do |student| %>
+      <tr>
+        <td><%=h student.name %></td>
+        <% @days.each do |day| %>
+          <td><%= link_to "Presente", frequencies_path(:frequency => {:course_class_id => @course_class.id, :student_id => student.id, :day => day, :presence => :true}), :method => :post %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+
+<% end %>
+
+
+<%= link_to 'Back', course_class_frequencies_path(@course_class) %>
+

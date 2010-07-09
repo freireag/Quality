@@ -3,6 +3,7 @@ class Student < ActiveRecord::Base
 
   has_many :student_classes
   has_many :course_classes, :through => :student_classes
+  has_many :frequencies
 
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable, :registerable, :validatable and :activatable

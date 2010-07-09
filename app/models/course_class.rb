@@ -1,12 +1,14 @@
 class CourseClass < ActiveRecord::Base
   WEEKDAYS = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
+  ENWEEKDAYS = %w[sunday monday tuesday wednesday thursday friday saturday]
 
   has_many :student_classes
   has_many :students, :through => :student_classes
+  has_many :frequencies
   belongs_to :course
   belongs_to :city
 
-  validates_presence_of :course, :start_time, :start_date, :end_date, :number
+  validates_presence_of :course, :start_time, :end_time, :start_date, :end_date, :number
   validates_numericality_of :number, :greater_than => 0
 
   before_create :ensure_end_date_is_after_start_date, :ensure_end_time_is_after_start_time
@@ -20,6 +22,14 @@ class CourseClass < ActiveRecord::Base
     WEEKDAYS.reject do |d|
       ((days_mask || 0) & 2**WEEKDAYS.index(d)).zero?
     end
+  end
+
+  def running?
+    self.start_date <= Date.today and self.end_date >= Date.today
+  end
+
+  def valid_day?(day)
+    self.start_date <= day and self.end_date >= day and enweekdays.include?(day.strftime("%A").downcase)
   end
 
   protected
@@ -49,6 +59,12 @@ class CourseClass < ActiveRecord::Base
       "0" + self.number.to_s
     else
       self.number.to_s
+    end
+  end
+
+  def enweekdays
+    ENWEEKDAYS.reject do |d|
+      ((days_mask || 0) & 2**ENWEEKDAYS.index(d)).zero?
     end
   end
 end
