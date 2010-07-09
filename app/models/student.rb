@@ -1,5 +1,9 @@
 class Student < ActiveRecord::Base
   MARITAL_STATUS = {:casado => "Casado(a)", :divorciado => "Divorciado(a)", :solteiro => "Solteiro(a)", :viuvo => "Viúvo(a)"}
+
+  has_many :student_classes
+  has_many :course_classes, :through => :student_classes
+
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable, :registerable, :validatable and :activatable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :authentication_keys => [:cpf]
@@ -13,5 +17,9 @@ class Student < ActiveRecord::Base
   #validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :within => 6..20, :allow_blank => true
+
+  def is_registered?(course_class)
+    self.course_classes.map(&:id).include? course_class.id
+  end
 end
 

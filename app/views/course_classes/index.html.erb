@@ -24,6 +24,7 @@
     <td><%=h course_class.course.name %></td>
     <td><%=h course_class.city.name %></td>
     <td><%=h course_class.observation %></td>
+    <td><%= link_to "Alunos", course_class_students_path(course_class) %>
     <td><%= link_to 'Visalizar', course_class %></td>
     <% if can? :update, course_class %>
       <td><%= link_to 'Editar', edit_course_class_path(course_class) %></td>

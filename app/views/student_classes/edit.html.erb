@@ -1,0 +1,20 @@
+<h1>Editing student_class</h1>
+
+<% form_for(@student_class) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :student %><br />
+    <%= f.text_field :student %>
+  </p>
+  <p>
+    <%= f.label :course_class %><br />
+    <%= f.text_field :course_class %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @student_class %> |
+<%= link_to 'Back', student_classes_path %>

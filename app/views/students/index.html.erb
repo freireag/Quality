@@ -1,4 +1,8 @@
-<h1>Listando estudantes</h1>
+<h1>Listando estudantes
+<% if @course_class %>
+  de <%= @course_class.code %>
+<% end %>
+</h1>
 
 <table>
   <tr>
@@ -22,6 +26,7 @@
     <td><%=h student.birthplace %></td>
     <td><%=h student.birthdate %></td>
     <td><%=h student.marital_status %></td>
+    <td><%= link_to 'Turmas', student_student_classes_path(student) %></td>
     <td><%= link_to 'Visualizar', student %></td>
     <% if can? :update, student %>
       <td><%= link_to 'Editar', edit_student_path(student) %></td>

@@ -4,7 +4,12 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.xml
   def index
-    @students = Student.all
+    if params[:course_class_id]
+      @course_class = CourseClass.find(params[:course_class_id])
+      @students = @course_class.students
+    else
+      @students = Student.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

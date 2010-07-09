@@ -1,0 +1,23 @@
+<h1>Adicionar Turmas</h1>
+
+<% form_for([@student, StudentClass.new]) do |f| %>
+  <% @courses.each do |course| %>
+    <h3><%=h course.name %></h3>
+    <p>
+      <% course.course_classes.each do |course_class| %>
+        <%= check_box_tag "student_class[course_class_id][]", course_class.id, @student.is_registered?(course_class) %>
+        <%=h course_class.code %>
+        <br />
+      <% end %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.hidden_field :student_id, :value => @student.id %>
+    <%= f.submit "Matricular" %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Voltar', :back %>
+

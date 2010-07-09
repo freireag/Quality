@@ -1,6 +1,8 @@
 class CourseClass < ActiveRecord::Base
   WEEKDAYS = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
 
+  has_many :student_classes
+  has_many :students, :through => :student_classes
   belongs_to :course
   belongs_to :city
 

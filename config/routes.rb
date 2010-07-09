@@ -1,13 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :student_classes
+
   map.resources :admin_files, :as => "arquivos"
 
   map.resources :cities, :as => "cidades"
 
   map.devise_for :students, :as => "alunos", :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'cadastro', :password => 'senha'}
 
-  map.resources :students, :as => "alunos"
+  map.resources :students, :as => "alunos" do |student|
+    student.resources :student_classes, :as => "turmas"
+  end
 
-  map.resources :course_classes, :as => "turmas"
+  map.resources :course_classes, :as => "turmas" do |course_class|
+    course_class.resources :students, :as => "alunos"
+  end
 
   map.devise_for :users, :as => "usuarios", :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'cadastro', :password => 'senha'}
   map.new_user_session 'login', :controller => :sessions, :action => :new, :conditions => {:method => :get}

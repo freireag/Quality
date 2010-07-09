@@ -1,0 +1,13 @@
+<p>
+  <b>Student:</b>
+  <%=h @student_class.student %>
+</p>
+
+<p>
+  <b>Course class:</b>
+  <%=h @student_class.course_class %>
+</p>
+
+
+<%= link_to 'Edit', edit_student_class_path(@student_class) %> |
+<%= link_to 'Back', student_classes_path %>
