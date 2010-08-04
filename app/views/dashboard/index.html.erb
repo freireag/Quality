@@ -1,0 +1,16 @@
+<% unless @course_classes.empty? %>
+  <% @course_classes.each do |course_class| %>
+    <h2><%=h course_class.course.name %></h2>
+    <%= render :partial => 'files', :locals => {:course_class => course_class} %>
+    <% unless course_class.exams.empty? %>
+      <%= render :partial => 'grades', :locals => {:exams => course_class.exams} %>
+    <% end %>
+    <% frequencies = course_class.frequencies.of_student(current_student.id) %>
+    <% unless frequencies.empty? %>
+      <%= render :partial => 'frequency', :locals => {:frequencies => frequencies} %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>Você não está inscrito em uma turma ainda!</p>
+<% end %>
+

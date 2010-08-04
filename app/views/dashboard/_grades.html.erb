@@ -1,0 +1,14 @@
+<h3>Notas</h3>
+<table>
+  <tr>
+    <% exams.each do |exam| %>
+      <th><%=h exam.name %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <% exams.each do |exam| %>
+      <td><%=h current_student.grade(exam.id).try(:grade) %></th>
+    <% end %>
+  </tr>
+</table>
+

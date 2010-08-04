@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.dashboard 'dashboard', :controller => :dashboard, :action => :index
+
   map.resources :frequencies, :as => "frequencias"
 
   map.resources :student_classes

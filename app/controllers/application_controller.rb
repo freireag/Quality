@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   def after_sign_in_path_for(resource)
-    courses_path
+    if current_student
+      dashboard_path
+    elsif current_user.role? :inspetor
+      admin_files_path
+    else
+      courses_path
+    end
   end
 
   def current_ability
@@ -23,6 +29,6 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
       flash[:error] = "Você não está autorizado a acessar essa página."
       redirect_to root_url
-    end
+  end
 end
 

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = %w[admin funcionario aluno]
+  ROLES = %w[admin inspetor]
 
   has_many :admin_files
 

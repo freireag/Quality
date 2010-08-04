@@ -4,6 +4,8 @@ class AdminFile < ActiveRecord::Base
 
   has_attached_file :attachment
 
+  named_scope :of_students, :conditions => {:permission => "aluno"}
+
   validates_presence_of :permission, :user_id
   validates_attachment_presence :attachment
 

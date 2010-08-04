@@ -6,8 +6,8 @@ class Ability
 
     if user.role? :admin
       can :manage, :all
-    elsif user.role? :funcionario
-      can :read, AdminFile, :permission => 'funcionario'
+    elsif user.role? :inspetor
+      can :read, AdminFile, :permission => 'inspetor'
       can :read, Course
       can :read, Student
     end

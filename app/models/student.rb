@@ -3,6 +3,7 @@ class Student < ActiveRecord::Base
 
   has_many :student_classes
   has_many :course_classes, :through => :student_classes
+  has_many :courses, :through => :course_classes
   has_many :frequencies
   has_many :grades
   has_many :exams, :through => :grades
@@ -27,6 +28,14 @@ class Student < ActiveRecord::Base
 
   def grade(exam_id)
     Grade.find(:first, :conditions => ["student_id = :s AND exam_id = :e", {:s => self.id, :e => exam_id}])
+  end
+
+  def courses
+    Course.find(self.course_classes.map(&:course_id))
+  end
+
+  def files(course_class)
+    AdminFile.find(:all, :conditions => ["course_id = ?", course_class.course.id])
   end
 end
 
