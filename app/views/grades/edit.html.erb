@@ -1,0 +1,31 @@
+<h1>Listando notas</h1>
+
+<% form_for :grades, :url => {:action => :update}, :html => {:method => :put} do |form| %>
+  <table>
+    <tr>
+      <th></th>
+      <% @exams.each do |exam| %>
+        <th><%=h exam.name %></th>
+      <% end %>
+    </tr>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%=h student.name %></td>
+        <% @exams.map(&:id).each do |exam_id| %>
+          <td>
+            <% grade = student.grade(exam_id) %>
+            <% fields_for :grades,  grade do |fields| %>
+              <%= hidden_field_tag "grades[id][]", grade.try(:id) %>
+              <%= hidden_field_tag "grades[exam_id][]", exam_id %>
+              <%= hidden_field_tag "grades[student_id][]", student.id %>
+              <%= text_field_tag "grades[grade][]", grade.try(:grade) %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <br />
+  <%= form.submit "Enviar" %>
+<% end %>
+

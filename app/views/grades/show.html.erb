@@ -1,0 +1,22 @@
+<h1>Listando notas</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <% @exams.each do |exam| %>
+      <th><%=h exam.name %></th>
+    <% end %>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr>
+    <td><%=h student.name %></td>
+    <% @exams.map(&:id).each do |id| %>
+      <td><%=h student.grade(id).try(:grade)  %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

@@ -1,0 +1,18 @@
+ <%= f.error_messages %>
+
+  <p>
+    <%= f.label :exam_type %><br />
+    <%= f.collection_select :exam_type, Exam::TYPES, :to_s, :humanize %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :exam_order %><br />
+    <%= f.text_field :exam_order %>
+  </p>
+  <p>
+    <%= f.submit 'Cadastrar' %>
+  </p>
+

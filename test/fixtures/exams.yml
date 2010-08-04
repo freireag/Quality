@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  type: MyString
+  name: MyString
+  order: 1
+  course_class: 
+
+two:
+  type: MyString
+  name: MyString
+  order: 1
+  course_class: 

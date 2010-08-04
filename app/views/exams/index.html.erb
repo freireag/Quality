@@ -1,0 +1,30 @@
+<h1>Listando avaliacoes</h1>
+
+<table>
+  <tr>
+    <th>Tipo</th>
+    <th>Nome</th>
+    <th>Ordem</th>
+  </tr>
+
+<% @exams.each do |exam| %>
+  <tr>
+    <td><%=h exam.exam_type %></td>
+    <td><%=h exam.name %></td>
+    <td><%=h exam.exam_order %></td>
+    <% if can? :update, exam %>
+      <td><%= link_to 'Editar', edit_course_class_exam_path(@course_class, exam) %></td>
+    <% end %>
+    <% if can? :destroy, exam %>
+      <td><%= link_to 'Remover', course_class_exam_path(@course_class, exam), :confirm => 'Tem certeza?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if can? :create, @exams %>
+  <%= link_to 'Nova avaliacao', new_course_class_exam_path(@course_class) %>
+<% end %>
+

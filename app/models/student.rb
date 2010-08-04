@@ -4,6 +4,8 @@ class Student < ActiveRecord::Base
   has_many :student_classes
   has_many :course_classes, :through => :student_classes
   has_many :frequencies
+  has_many :grades
+  has_many :exams, :through => :grades
 
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable, :registerable, :validatable and :activatable
@@ -21,6 +23,10 @@ class Student < ActiveRecord::Base
 
   def is_registered?(course_class)
     self.course_classes.map(&:id).include? course_class.id
+  end
+
+  def grade(exam_id)
+    Grade.find(:first, :conditions => ["student_id = :s AND exam_id = :e", {:s => self.id, :e => exam_id}])
   end
 end
 

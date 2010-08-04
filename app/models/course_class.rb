@@ -5,6 +5,7 @@ class CourseClass < ActiveRecord::Base
   has_many :student_classes
   has_many :students, :through => :student_classes
   has_many :frequencies
+  has_many :exams
   belongs_to :course
   belongs_to :city
 
