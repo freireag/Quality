@@ -1,46 +1,80 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Language" content="pt-br" />
+  <meta name="language" content="portuguese" />
   <title>Quality</title>
-  <%= stylesheet_link_tag 'scaffold' %>
-  <%= stylesheet_link_tag 'style' %>
+  <!--><%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'style' %>-->
+  <%= stylesheet_link_tag 'qw' %>
+
+  <!--[if IE]>
+  <style type="text/css">
+  /* place css fixes for all versions of IE in this conditional comment */
+  .qw #sidebar { padding-top: 0; }
+  .qw #main { zoom: 1; padding-top: 0; }
+  /* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+  </style>
+  <![endif]-->
 </head>
-<body>
+<body class="qw">
 
-<p style="color: green"><%= notice %></p>
-<p style="color: red"><%= flash[:error] %></p>
+<!-- #geral -->
+<div id="geral">
 
-<% if user_signed_in? or student_signed_in? %>
-<div id="menu">
-  <ul>
-    <li><%= link_to "Cursos", courses_path %></li>
-    <li><%= link_to "Turmas", course_classes_path %></li>
-    <li><%= link_to "Cidades", cities_path %></li>
-    <li><%= link_to "Usuários", users_path %></li>
-    <li><%= link_to "Alunos", students_path %></li>
-    <li><%= link_to "Arquivos", admin_files_path %></li>
-  </ul>
+	  <!-- #header -->
+    <div id="header">
+    		<div id="logo"><a href="../index.html"><img src="images/logo130x77.jpg" width="130" height="77" alt="Quality - Home" border="0" /></a></div>
+          <div id="admin"><h1>ADMINISTRATIVO</h1></div>
+
+		  <% if user_signed_in? %>
+        <div id="usuario">Olá <%=h current_user.name %>,</div>
+        <div id="sair"><%= link_to image_tag("sair.png", :size=> "48x18", :border => 0), destroy_user_session_path %></div>
+       <% elsif student_signed_in? %>
+         <div id="usuario">Olá <%=h current_student.name %>,</div>
+        <div id="sair"><%= link_to image_tag("sair.png", :size=> "48x18", :border => 0), destroy_student_session_path %></div>
+      <% end %>
+
+    </div>
+	  <!-- #header -->
+
+	  <div id="clear"><!-- alinhamento --></div>
+
+    <p style="color: green"><%= notice %></p>
+    <p style="color: red"><%= flash[:error] %></p>
+
+    <!-- #sidebar -->
+    <div id="sidebar">
+          <!-- MENU -->
+          <div id="menugeral">
+              <ul>
+                  <!-- LISTA -->
+                  <li><%= link_to "Cadastros", students_path %></li>
+                  <li><a href="frequencia.html">Frequência</a></li>
+                  <li><a href="notas.html">Notas</a></li>
+                  <li><%= link_to "Arquivos", admin_files_path %></li>
+                  <li><a href="avisos.html">Avisos</a></li>
+                  <li><a href="logs.html">Log's</a></li>
+                  <li><a href="boletos.html">Boletos</a></li>
+                  <!-- /LISTA -->
+	            </ul>
+         </div>
+         <!-- /MENU -->
+    </div>
+    <!-- /#sidebar -->
+
+    <!-- #main -->
+    <div id="main">
+
+      <%= yield %>
+
+    </div>
+    <!-- /#main -->
+    <br class="clearfloat" />
+
 </div>
-<div class="clear"></div>
-<% end %>
-
-<div id="main"">
-<p>
-<% if user_signed_in? %>
-  Bem vindo <%=h current_user.name %>.
-  <%= link_to "Sair", destroy_user_session_path %>
- <% elsif student_signed_in? %>
-  Bem vindo <%=h current_student.name %>.
-  <%= link_to "Sair", destroy_student_session_path %>
-<% end %>
-</p>
-
-<%= yield %>
-
-</div>
+<!-- /#geral -->
 
 </body>
 </html>

@@ -1,0 +1,225 @@
+@charset "iso-8859-1";
+body  {
+	font: 100% "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	background: url(../images/background.jpg) top center repeat-x #F5F5F5;
+	margin: 0 auto; 
+	padding: 0;
+}
+
+
+.qw #geral { background: url(../images/testegeral.jpg) top center no-repeat; width: 1000px; height: 1024px; margin: 0 auto; } 
+
+
+.qw #header { width: 1000px; height: 140px; background: url(../images/header.jpg); clear: both}
+	.qw #logo { width: 130px; height: 77px; margin: 43px 0 20px 94px }
+	.qw #admin  { width: auto; height: 60px; margin: 55px 0 25px 50px}
+	.qw #header h1 { font: 20px Swis721MdBTMedium, Verdana, Geneva, sans-serif; color:#FFF }
+		.qw #logo, #admin, #sair, #usuario { float: left }
+			.qw #usuario { width: 100px; height: 16px; margin: 75px 0 49px 330px; font-size: 10px; color:#FFF; text-align: right }
+			.qw #sair { width: 48px; height: 18px; margin: 73px auto 49px 10px }
+
+
+.qw #sidebar {float: left; height: 820px; width: 230px;margin: 0 0 0 40px; padding: 0; background: url(../images/menulateral.png) no-repeat center }
+
+.qw #main, #contents { heigth: auto; background-color: #FFF }
+	.qw #main { width: 670px; float: left; padding: 0; margin: 0 }
+	.qw #contents { width: 638px; background: url(../images/tira-bgpitens.gif); padding: 0 12px 20px 20px }
+	.qw #contents, #dadosdocurso, #dadosdoaluno { clear: both; margin: 0  }
+	
+	.qw #dadosdocurso { height: 195px; background:url(../images/bgcadastraralunos.gif) }
+	.qw #dadosdoaluno { height: 316px; background:url(../images/bgcadastrarcursos.gif) }
+		.qw #dadosdocurso, #dadosdoaluno  { width: 562px; padding: 36px 80px 0 28px }
+		
+		.qw #dadosline-um, #dadosline-dois, #dadosline-tres, #dadosline-quatro, #dadosline-cinco, #dadosline-seis, #dadosline-sete, #dadosline-codigo,#dadosline-teorica, 				#dadosline-pratica, #dadosline-quantidade { height: 18px; float: left; font-size: 9px; text-align: left; color: #069}  
+		.qw #dadosline-um, #dadosline-dois, #dadosline-tres, #dadosline-quatro, #dadosline-cinco, #dadosline-seis  { margin-bottom: 20px }
+		.qw #dadosline-um input, #dadosline-dois input, #dadosline-tres input, #dadosline-quatro input { border: 0;  color: #069; font-size: 9px; padding-top: 2px } 
+		
+			.qw #dadosline-um, #dadosline-quatro { width: 562px }
+			.qw #dadosline-dois { width: 208px; margin-right: 30px }
+			.qw #dadosline-tres { width: 323px }
+			.qw #dadosline-cinco, #dadosline-seis { width: 92px }
+			
+			.qw #dadosline-um input, #dadosline-codigo input, #dadosline-quantidade input, #dadosline-pratica input { border: 0;  color: #069; font-size: 9px; padding-top: 2px }
+			
+			.qw #dadosline-sete { width: 96px }
+			.qw #dadosline-sete, #dadosline-codigo { margin-bottom: 44px }
+			.qw #dadosline-codigo { width: 135px; margin-right: 88px }
+			.qw #dadosline-quantidade { width: 135px; margin-right: 427px }
+			.qw #dadosline-teorica { margin-right: 428px }
+			.qw #dadosline-pratica { margin-top: 12px; margin-bottom: 1px }
+			.qw #dadosline-ok { width: 36px;  height: 13px; margin: 13px 372px 20px 5px}
+				.qw #dadosline-teorica, #dadosline-pratica { width: 134px }
+				.qw #addmais { width: 86px;  height: 13px; float: left; margin: 16px 336px 0 140px}
+				.qw #medicao, #treinamento { width: 23px; height: 23px; margin: 0 435px 6px 102px}
+				.qw #medicao, #treinamento, #addmais, #dadosline-ok  { float: left }
+				
+	
+	/* --Listas--  */
+
+			.qw #dadosline-select-a { margin-right: 36px }
+			.qw #dadosline-select-b { margin-right: 304px }
+			.qw #dadosline-select-c { margin-right: 52px }
+			.qw #dadosline-select-d { margin-right: 0 }
+			.qw #dadosline-select-e { margin-right: 225px;  margin-bottom: 44px }
+			
+				.qw #dadosline-select-a, #dadosline-select-b, #dadosline-select-c, #dadosline-select-d, #dadosline-select-e { width: 18px; height: 18px; float: left }
+				.qw #dadosline-select-a, #dadosline-select-b { margin-bottom: 20px }
+				.qw #dadosline-select-c, #dadosline-select-d { margin-bottom: 0; margin-top: 4px }
+				.qw #btcadastrar-aluno { width: 80px; height: 23px; margin: 0; float: left; margin-top: 15px; margin-right: 482px }
+
+		/* --/Listas--  */
+
+
+
+	.txtconstrucao { color:#036; font-size: 12px }
+
+
+	.qw #rdpitens { width: 670px; height: 20px; background: url(../images/rdpitens.gif) bottom; margin-bottom: 25px; clear:both }
+
+		.qw #call-alunos { margin: 0 490px 0 6px; } 
+		.qw #call-cadastrar { margin: 0 490px 0 6px; }  
+		.qw #call-turma { margin: 10px 0 0 0 }
+		.qw #call-notas { margin: 10px 313px 0 0 }
+		.qw #call-frequencia { margin: 0 491px 0 5px; background:url(../images/hdralunos.png); width: 166px }
+			.qw #call-turma, #call-notas { background:url(../images/topturma.gif); width: 317px; clear:both }
+			.qw #call-frequencia, #call-alunos, #call-cadastrar { width: 166px } 
+			.qw #call-alunos, #call-cadastrar { background: url(../images/hdralunos.png)}
+			.qw #call-alunos, #call-cadastrar, #call-frequencia, #call-turma, #call-notas { 
+					float: left; 
+					padding: 10px 0 0 8px; 
+					font-weight: bold; 
+					color: #FFF; 
+					line-height: 0;
+					font-size: 12px;
+					height: 15px
+	}
+
+		.qw #buscar_alunos, #buscar_frequencia, #buscar_boletos, #buscar_cursos { height: 22px; padding: 0; clear: both; padding: 27px 0 27px 20px }
+		.qw #buscar_alunos { background: url(../images/buscaralunos.png)}
+		.qw #buscar_cursos { background: url(../images/buscarcursos.png)}
+		.qw #buscar_frequencia {  background: url(../images/topofrequencia.png)}
+		.qw #buscar_boletos {  background: url(../images/topoboletos.png)}
+		
+			.qw #frequencia-box { width: 338px; padding-top: 35px }
+			.qw #datas-box {width: 300px }
+			.qw #frequencia-box, #datas-box {  float: left; height: auto }
+			.qw #datasline { width: 300px; height: 20px; clear: both; margin: 6px 0 9px 0 }
+			.qw #turmasline { width: 338px; height: 30px; float: left; font-size: 12px; color:#FFF }
+			.qw #datas-esq, #datas-dir { width: 15px; height: 20px; float: left }
+			.qw #datas-txt { width: 270px; height: 17px; text-align: center; font-size: 14px; padding-top: 3px; float:left; color: #069}
+				.qw #tab-freq { width: 338px; padding:0 }
+				.qw #tab-datas { width: 300px }
+				.qw #tab-notas { width: 638px }
+				.qw #tab-freq, #tab-datas, #tab-notas { height: auto;clear: both;color: #330 }
+				.qw #marcardia { width: 100%; height: 25px }
+				.qw #marcardia p { line-height: 0px; font-size: 0px }
+		
+		.qw #impttext_alunos { width: 315px  }
+		.qw #impttext_alunos input, #impttext_frequencia input, #impttext_boletos input, #impttext_numbolet input { border: 0;  color: #069; font-size: 9px; }
+		.qw #impttext_frequencia { width: 180px }
+		.qw #impttext_boletos { width: 182px }
+		.qw #impttext_numbolet { width: 108px; margin: 0 0 0 38px }
+		.qw #escolha-a { margin-left: 82px }
+		.qw #escolha-b { margin-right: 0 }
+		.qw #escolha-c { margin-left: 38px }
+		.qw #escolha-a, #escolha-b, #escolha-c { width: 94px; height: 18px; font-size: 9px; text-align: left; color: #069; margin-top: 4px; float:left }
+		
+		
+	.qw #avisosnome { height: 20px; padding: 4px 0 0 0 }
+	.qw #avisosemail { padding: 2px 0 0 0; margin-top: 8px }
+	.qw #avisosemail input { border: 0;  color: #069; font-size: 9px }
+	.qw #avisosnome, #avisosemail, #avisosbotoes { width: 300px; clear:both ; color: #069; font-size:10px; text-align: left; margin-right: 338px }
+	.qw #avisosbotoes { padding-top: 14px }
+	.qw #avisosemail, #avisosbotoes, #desativarenvio { height: 24px }
+		.qw #desativarenvio { width: 108px; float: left }
+		.qw #gravarenvio { width: 68px; height: 18px; margin: 3px 10px 0 0; float: left }
+	
+		
+		.qw #imptbotao { width: 57px; height: 22px; padding: 0 0 0 10px}
+			.qw #impttext_alunos, #impttext_frequencia, #impttext_boletos, #impttext_numbolet { 
+			padding-top: 4px;
+			font-size: 9px;
+			color:#666; 
+			padding-left: 5px;
+			height: 18px 
+			}
+			
+			.qw #impttext_alunos, #imptbotao, #impttext_frequencia, #impttext_boletos, #impttext_numbolet, #escolha-a, #escolha-b { float: left }
+
+		.tabelline-tt, .tabelline-pp { color:#036; padding: 5px 0 0 2px }
+		.tabelline-tt {font-weight: bold; text-align: center; font-size:10px }
+		.tabelline-pp {font-weight: normal; font-size:9px }
+		
+
+
+/* p/ estruturacao */
+
+.fltrt { float: right;margin-left: 8px} 
+/* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+.fltlft { float: left; margin-right: 8px; } /* this class can be used to float an element left in your page */
+.clearfloat { clear:both; height:0; font-size: 1px; line-height: 0px }
+.qw #clear { clear: both; line-height: 0px }
+
+
+
+
+/* --- MENU --- */
+
+
+
+#menugeral { padding: 0; margin: 0 }
+
+#menugeral ul{ 
+		width:230px; 
+		padding:0;
+		margin: 0;
+		width: 300px;
+		font: 12px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		list-style: none
+} 
+  
+#menugeral ul li a{ 
+		color: #003; 
+		text-decoration:none;
+		background: url(../images/botao.png) top no-repeat;
+		float: left;
+		width: 156px;
+		height: 22px;
+		display: block;
+		margin: 0 0 4px 28px;
+		padding: 5px 0 0 20px;
+} 
+ 
+#menugeral ul li a:hover, a:active { color:#003;background: url(../images/botao.png) bottom no-repeat; text-decoration: none; } 
+#menugeral ul li a:visited { color:#003 } 
+
+
+
+/* ---- FONTES ---*/
+
+
+
+@font-face {
+	font-family: 'Swis721BTBold';
+	src: url('../fonts/swiss_721_bold_bt-webfont.eot');
+	src: local('?'), url('../fonts/swiss_721_bold_bt-webfont.woff') format('woff'), url('../fonts/swiss_721_bold_bt-webfont.ttf') format('truetype'), url('../fonts/swiss_721_bold_bt-webfont.svg#webfontcDOA9kXR') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Swis721MdBTMedium';
+	src: url('../fonts/swiss_721_medium_bt-webfont.eot');
+	src: local('?'), url('../fonts/swiss_721_medium_bt-webfont.woff') format('woff'), url('../fonts/swiss_721_medium_bt-webfont.ttf') format('truetype'), url('../fonts/swiss_721_medium_bt-webfont.svg#webfontlPFENX98') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Swis721BTRoman';
+	src: url('../fonts/swiss_721_bt-webfont.eot');
+	src: local('?'), url('../fonts/swiss_721_bt-webfont.woff') format('woff'), url('../fonts/swiss_721_bt-webfont.ttf') format('truetype'), url('../fonts/swiss_721_bt-webfont.svg#webfont4CSRRYvC') format('svg');
+	font-weight: normal;
+	font-style: normal;table {
+	color: #3BA1C6;
+}

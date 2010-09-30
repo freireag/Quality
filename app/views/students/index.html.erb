@@ -1,44 +1,29 @@
-<h1>Listando alunos
-<% if @course_class %>
-  de <%= @course_class.code %>
-<% end %>
-</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Email</th>
-    <th>Telefone</th>
-    <th>RG</th>
-    <th>CPF</th>
-    <th>Naturalidade</th>
-    <th>Data de Nascimento</th>
-    <th>Estado Civil</th>
+<div id="contents">
+  <table width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+  <tr bgcolor="#7ebecc">
+	  <td width="29%" height="25"><span class ="tabelline-tt" >NOME DO ALUNO</span></td>
+    <td width="23%" height="25"><span class ="tabelline-tt" >CPF</span></td>
+    <td width="14%" height="25">&nbsp;</td>
+    <td width="14%" height="25">&nbsp;</td>
+    <td width="20%" height="25">&nbsp;</td>
   </tr>
 
-<% @students.each do |student| %>
-  <tr>
-    <td><%=h student.name %></td>
-    <td><%=h student.email %></td>
-    <td><%=h student.phone %></td>
-    <td><%=h student.rg %></td>
-    <td><%=h student.cpf %></td>
-    <td><%=h student.birthplace %></td>
-    <td><%=h student.birthdate %></td>
-    <td><%=h student.marital_status %></td>
-    <td><%= link_to 'Turmas', student_student_classes_path(student) %></td>
-    <td><%= link_to 'Visualizar', student %></td>
-    <% if can? :update, student %>
-      <td><%= link_to 'Editar', edit_student_path(student) %></td>
-    <% end %>
-    <% if can? :destroy, student %>
-      <td><%= link_to 'Remover', student, :confirm => 'Tem certeza?', :method => :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
+  <% @students.each do |student| %>
+    <tr>
+      <td height="25"><span class ="tabelline-pp" ><%=h student.name %></span></td>
+      <td height="25"><span class ="tabelline-pp" ><%=h student.cpf %></span></td>
+      <% if can? :update, student %>
+        <td height="25"><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_student_path(student) %></td>
+      <% end %>
+      <% if can? :destroy, student %>
+        <td height="25"><a href="#"><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), student, :confirm => 'Tem certeza?', :method => :delete %></td>
+      <% end %>
+      <td height="25"><a href="#"><%= link_to image_tag("addturma.png", :size => "128x18", :border => 0), new_student_student_class_path(student) %></a></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<div id="rdpitens"></div>
 
 <% if can? :create, @students %>
   <%= link_to 'Novo aluno', new_student_path %>
