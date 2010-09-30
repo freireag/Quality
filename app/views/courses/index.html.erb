@@ -1,29 +1,33 @@
-<h1>Listando cursos</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Código</th>
-    <th>Carga Horária</th>
-    <th>Preço</th>
+<div id="contents">
+  <table width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+  <tr bgcolor="#7ebecc">
+	  <td height="25"><span class ="tabelline-tt" >NOME DO CURSO</span></td>
+    <td width="8%" height="25"><span class ="tabelline-tt" >CÓDIGO</span></td>
+    <td width="4%" height="25"><span class ="tabelline-tt" >CH</span></td>
+    <td width="10%" height="25"><span class ="tabelline-tt" >PRECO</span></td>
+    <td width="14%" height="25">&nbsp;</td>
+    <td width="14%" height="25">&nbsp;</td>
+    <td width="14%" height="25">&nbsp;</td>
   </tr>
 
-<% @courses.each do |course| %>
-  <tr>
-    <td><%=h course.name %></td>
-    <td><%=h course.code %></td>
-    <td><%=h course.credit_hours %></td>
-    <td><%=h course.price %></td>
-    <td><%= link_to 'Visualizar', course %></td>
-    <% if can? :update, course %>
-      <td><%= link_to 'Editar', edit_course_path(course) %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
+  <% @courses.each do |course| %>
+    <tr>
+      <td height="25"><span class ="tabelline-pp" ><%=h course.name %></span></td>
+      <td height="25"><span class ="tabelline-pp" ><%=h course.code %></span></td>
+      <td height="25"><span class ="tabelline-pp" ><%=h course.credit_hours %></span></td>
+      <td height="25"><span class ="tabelline-pp" ><%=h course.price %></span></td>
+      <td height="25"><span class ="tabelline-pp" ><%= link_to 'Visualizar', course %></span></td>
+      <% if can? :update, course %>
+        <td height="25"><span class ="tabelline-pp" ><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_course_path(course) %></span></td>
+      <% end %>
+      <% if can? :destroy, course %>
+        <td height="25"><span class ="tabelline-pp" ><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), course, :confirm => 'Tem certeza?', :method => :delete %></span></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<div id="rdpitens"></div>
 <% if can? :create, @courses %>
   <%= link_to 'Novo curso', new_course_path %>
 <% end %>

@@ -1,37 +1,35 @@
-<h1>Listing admin_files</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Permission</th>
-    <th>Course</th>
-    <th>User</th>
-    <th>Attachment file name</th>
-    <th>Attachment content type</th>
-    <th>Attachment file size</th>
-    <th>Attachment updated at</th>
+<div id="contents">
+  <table width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+  <tr bgcolor="#7ebecc">
+    <td height="25"><span class ="tabelline-tt" >TÍTULO</span></td>
+    <td height="25"><span class ="tabelline-tt" >CURSO</span></td>
+    <td height="25"><span class ="tabelline-tt" >ARQUIVO</span></td>
+    <td height="25"><span class ="tabelline-tt" >USUÁRIO</span></td>
+    <td height="25"><span class ="tabelline-tt" >DATA</span></td>
+    <td width="14%" height="25">&nbsp;</td>
+    <td width="14%" height="25">&nbsp;</td>
   </tr>
 
 <% @admin_files.each do |admin_file| %>
   <tr>
-    <td><%=h admin_file.title %></td>
-    <td><%=h admin_file.permission %></td>
-    <td><%=h admin_file.course.try(:name) %></td>
-    <td><%=h admin_file.user.name %></td>
-    <td><%= link_to h(admin_file.attachment_file_name), admin_file.attachment.url %></td>
-    <td><%=h admin_file.attachment_content_type %></td>
-    <td><%=h admin_file.attachment_file_size %></td>
-    <td><%=h admin_file.attachment_updated_at %></td>
-    <td><%= link_to 'Show', admin_file %></td>
-    <td><%= link_to 'Edit', edit_admin_file_path(admin_file) %></td>
+    <td height="25"><span class ="tabelline-pp" ><%=h admin_file.title %></span></td>
+    <td height="25"><span class ="tabelline-pp" ><%=h admin_file.course.try(:name) %></span></td>
+    <td height="25"><span class ="tabelline-pp" ><%= link_to h(admin_file.attachment_file_name), admin_file.attachment.url %></span></td>
+    <td height="25"><span class ="tabelline-pp" ><%=h admin_file.user.name %></span></td>
+    <td height="25"><span class ="tabelline-pp" ><%=h admin_file.attachment_updated_at.strftime("%d/%m/%Y") %></span></td>
+    <% if can? :edit, admin_file %>
+      <td><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_admin_file_path(admin_file) %></span></td>
+    <% end %>
     <% if can? :destroy, admin_file %>
-      <td><%= link_to 'Destroy', admin_file, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), admin_file, :confirm => 'Are you sure?', :method => :delete %></span></td>
     <% end %>
   </tr>
 <% end %>
 </table>
+</div>
+<div id="rdpitens"></div>
 
-<br />
-
-<%= link_to 'New admin_file', new_admin_file_path %>
+<% if can? :create, @admin_files %>
+  <%= link_to 'New admin_file', new_admin_file_path %>
+<% end %>
 

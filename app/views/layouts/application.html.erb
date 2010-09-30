@@ -25,7 +25,7 @@
 
 	  <!-- #header -->
     <div id="header">
-    		<div id="logo"><a href="../index.html"><img src="images/logo130x77.jpg" width="130" height="77" alt="Quality - Home" border="0" /></a></div>
+    		<div id="logo"><a href="../index.html"><%= image_tag "logo130x77.jpg", :size => "130x77", :alt => "Quality - Home", :border => 0 %></a></div>
           <div id="admin"><h1>ADMINISTRATIVO</h1></div>
 
 		  <% if user_signed_in? %>
@@ -41,32 +41,36 @@
 
 	  <div id="clear"><!-- alinhamento --></div>
 
-    <p style="color: green"><%= notice %></p>
-    <p style="color: red"><%= flash[:error] %></p>
-
     <!-- #sidebar -->
     <div id="sidebar">
+          <% if user_signed_in? or student_signed_in? %>
           <!-- MENU -->
           <div id="menugeral">
               <ul>
                   <!-- LISTA -->
-                  <li><%= link_to "Cadastros", students_path %></li>
+                  <li><%= link_to "Alunos", students_path %></li>
+                  <li><%= link_to "Cursos", courses_path %></li>
+                  <li><%= link_to "Turmas", course_classes_path %></li>
+                  <li><%= link_to "Cidades", cities_path %></li>
                   <li><a href="frequencia.html">Frequência</a></li>
                   <li><a href="notas.html">Notas</a></li>
                   <li><%= link_to "Arquivos", admin_files_path %></li>
                   <li><a href="avisos.html">Avisos</a></li>
+                  <li><%= link_to "Usuários", users_path %></li>
                   <li><a href="logs.html">Log's</a></li>
                   <li><a href="boletos.html">Boletos</a></li>
                   <!-- /LISTA -->
 	            </ul>
          </div>
          <!-- /MENU -->
+         <% end %>
     </div>
     <!-- /#sidebar -->
 
     <!-- #main -->
     <div id="main">
-
+      <p style="color: green"><%= notice %></p>
+      <p style="color: red"><%= flash[:error] %></p>
       <%= yield %>
 
     </div>

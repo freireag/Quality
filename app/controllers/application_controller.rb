@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     elsif current_user.role? :inspetor
       admin_files_path
     else
-      courses_path
+      students_path
     end
   end
 
