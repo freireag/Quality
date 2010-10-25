@@ -1,5 +1,5 @@
 <div id="contents">
-  <table width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+  <table id="listagem" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
   <tr bgcolor="#7ebecc">
 	  <td width="29%" height="25"><span class ="tabelline-tt" >CURSO</span></td>
     <td width="23%" height="25"><span class ="tabelline-tt" >CÓDIGO</span></td>
@@ -10,18 +10,18 @@
     <td width="14%" height="25">&nbsp;</td>
   </tr>
 
-  <% @course_classes.each do |course_class| %>
-    <tr>
-      <td height="25"><span class ="tabelline-pp" ><%=h course_class.course.name %></span></td>
-      <td height="25"><span class ="tabelline-pp" ><%=h course_class.code %></span></td>
-      <td height="25"><span class ="tabelline-pp" ><%=h course_class.city.name %></span></td>
-      <td height="25"><span class ="tabelline-pp" ><%=h course_class.start_date %></span></td>
-      <td height="25"><%= link_to "Avaliacões", course_class_exams_path(course_class) %>
+  <% @course_classes.each_with_index do |course_class,index| %>
+    <tr bgcolor="<%= define_color(index) %>">
+      <td><%=h course_class.course.name %></td>
+      <td><%=h course_class.code %></td>
+      <td><%=h course_class.city.name %></td>
+      <td><%=h course_class.start_date %>></td>
+      <td><%= link_to "Avaliacões", course_class_exams_path(course_class) %>
       <% if can? :update, course_class %>
-        <td height="25"><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_course_class_path(course_class) %></td>
+        <td><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_course_class_path(course_class) %></td>
       <% end %>
       <% if can? :destroy, course_class %>
-        <td height="25"><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), course_class, :confirm => 'Tem certeza?', :method => :delete %></td>
+        <td><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), course_class, :confirm => 'Tem certeza?', :method => :delete %></td>
       <% end %>
     </tr>
   <% end %>
