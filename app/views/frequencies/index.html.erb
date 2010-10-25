@@ -1,41 +1,80 @@
-<h1>Listando frequências
-<% if @course_class %>
-  de <%= @course_class.code %>
-<% end %>
-</h1>
-
-
-<table>
-  <tr>
-  <th><%= link_to "Previous", change_week_course_class_frequencies_path(@course_class, :start_date => @days.first, :direction => :previous), :method => :put %></th>
-  <% @days.each do |day| %>
-    <th><%= day.strftime("%d/%m (%a)") %></th>
-  <% end %>
-  <th><%= link_to "Next", change_week_course_class_frequencies_path(@course_class, :start_date => @days.first, :direction => :next), :method => :put %></th>
-  </tr>
-  <% form_tag frequencies_path do %>
-  <% @course_class.students.each do |student| %>
-    <tr>
-      <td><%=h student.name %></td>
-      <% @days.each do |day| %>
-        <% frequency = find_frequency(@course_class, student, day) %>
-        <td>
-          <%= check_box_tag 'frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}", (:checked unless frequency.nil?) %>
-          <% unless frequency.nil? %>
-            <%= hidden_field_tag 'remove_frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}" %>
-          <% end %>
-        </td>
-      <% end %>
-      <td></td>
-    </tr>
-  <% end %>
-</table>
-<%= hidden_field_tag :course_class_id, @course_class.id %>
-<%= hidden_field_tag :start_date, @days.first %>
-<%= submit_tag "Cadastrar Frequencias" %>
-<% end %>
-
-<br />
-
-<%= link_to 'Cadastrar Frequências', new_course_class_frequency_path(@course_class) %>
-
+<div id="contents">
+  <div id="frequencia-box">
+    <div id="tab-freq">
+      <table width="100%" border="0" cellpadding="1" cellspacing="1" >
+        <tr>
+          <td height="30" colspan="2" style="background:url(/images/topturma.gif) no-repeat bottom left; color: #FFF; font-size: 10px; padding-left:5px; font-weight:bold"><%= @course_class.code %></td>
+        </tr>
+        <tr>
+          <td width="15%"  bgcolor="#7ebecc" height="36"><span class="tabelline-tt">NOME DO ALUNO</span></td>
+          <td width="14%" bgcolor="#7ebecc"><span class="tabelline-tt">CPF</span></td>
+        </tr>
+        <% @course_class.students.each_with_index do |student,index| %>
+          <tr bgcolor=<%= define_color(index) %>>
+            <td height="25"><span class="tabelline-pp"><%=h student.name %></span></td>
+            <td height="25"><span class="tabelline-pp"><%=h student.cpf %></span></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  
+  <div id="datas-box">
+    <div id="datasline">
+      <div id="datas-esq"><%= link_to image_tag("setaesquerda.gif", :size => "15x20", :border => 0, :alt => "Anterior"), 
+                              change_week_course_class_frequencies_path(@course_class, :start_date => @days.first, 
+                              :direction => :previous), :method => :put %></div>
+      <div id="datas-txt">De <%= @days.first.strftime("%d/%m/%Y") %> a <%= @days.last.strftime("%d/%m/%Y") %></div>
+      <div id="datas-esq"><%= link_to image_tag("setadireita.gif", :size => "15x20", :border => 0, :alt => "Próximo"), 
+                              change_week_course_class_frequencies_path(@course_class, :start_date => @days.first, 
+                              :direction => :next), :method => :put %></div>
+    </div>
+    <% form_tag frequencies_path do %>
+      <div id="tab-datas">
+        <table width="100%" border="0" cellpadding="1" cellspacing="1">
+          <tr bgcolor="#7ebecc" align="center">
+        		<td><span class="tabelline-pp"><input type="checkbox" name="marcardia" id="marcardia2"  /></span></td>
+            <td height="30"><span class="tabelline-pp"><input type="checkbox" name="marcardia" id="marcardia2" /></span></td>
+            <td height="30"><span class="tabelline-pp"><input type="checkbox" name="marcardia" id="marcardia2" /></span></td>
+            <td height="30"><span class="tabelline-pp"><input type="checkbox" name="marcardia" id="marcardia2" /></span></td>
+            <td height="30"><span class="tabelline-pp"><input type="checkbox" name="marcardia" id="marcardia2" /></span></td>
+            <td height="30"><span class="tabelline-pp"><input type="checkbox" name="marcardia" id="marcardia2" /></span></td>
+            <td height="30"><span class="tabelline-pp"><input type="checkbox" name="marcardia" id="marcardia2" /></span></td>
+          </tr>
+          <tr bgcolor="#7ebecc" align="center">
+            <% @days.each do |day| %>
+              <td height="36"><span class="tabelline-tt"><%= day.strftime("%d/%m (%a)") %></span></td>
+            <% end %>
+          </tr>
+          
+            <% @course_class.students.each_with_index do |student,index| %>
+              <tr bgcolor="<%= define_color(index) %>" align="center">
+                <% @days.each do |day| %>
+                  <% frequency = find_frequency(@course_class, student, day) %>
+                  <td>
+                    <%= check_box_tag 'frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}", (:checked unless frequency.nil?) %>
+                    <% unless frequency.nil? %>
+                      <%= hidden_field_tag 'remove_frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}" %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+        </table>
+      </div>
+      <div id="marcardia">
+        <table width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0" align="center">
+          <tr height="35"  bgcolor="#7EBECC" align="center">
+            <td coldspan="7" align="center">
+              <%= hidden_field_tag :course_class_id, @course_class.id %>
+              <%= hidden_field_tag :start_date, @days.first %>
+              <%= submit_tag "Cadastrar Frequencias" %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+  </div>
+  <br class="clearfloat" />
+</div>
+<div id="rdpitens"><!--pre-rodape--></div>  
