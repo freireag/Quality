@@ -4,24 +4,36 @@
 <% end %>
 </h1>
 
+
 <table>
   <tr>
-    <th>Dia</th>
-    <th>Curso</th>
-    <th>Aluno</th>
-    <th>Presenca</th>
+  <th><%= link_to "Previous", change_week_course_class_frequencies_path(@course_class, :start_date => @days.first, :direction => :previous), :method => :put %></th>
+  <% @days.each do |day| %>
+    <th><%= day.strftime("%d/%m (%a)") %></th>
+  <% end %>
+  <th><%= link_to "Next", change_week_course_class_frequencies_path(@course_class, :start_date => @days.first, :direction => :next), :method => :put %></th>
   </tr>
-
-<% @frequencies.each do |frequency| %>
-  <tr>
-    <td><%=h frequency.day %></td>
-    <td><%=h frequency.course_class.course.name %></td>
-    <td><%=h frequency.student.name %></td>
-    <td><%=h frequency.presence ? "Sim" : "Não" %></td>
-    <td><%= link_to 'Remover', frequency, :confirm => 'Tem certeza?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% form_tag frequencies_path do %>
+  <% @course_class.students.each do |student| %>
+    <tr>
+      <td><%=h student.name %></td>
+      <% @days.each do |day| %>
+        <% frequency = find_frequency(@course_class, student, day) %>
+        <td>
+          <%= check_box_tag 'frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}", (:checked unless frequency.nil?) %>
+          <% unless frequency.nil? %>
+            <%= hidden_field_tag 'remove_frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}" %>
+          <% end %>
+        </td>
+      <% end %>
+      <td></td>
+    </tr>
+  <% end %>
 </table>
+<%= hidden_field_tag :course_class_id, @course_class.id %>
+<%= hidden_field_tag :start_date, @days.first %>
+<%= submit_tag "Cadastrar Frequencias" %>
+<% end %>
 
 <br />
 

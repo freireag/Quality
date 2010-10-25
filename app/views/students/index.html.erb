@@ -1,5 +1,5 @@
 <div id="contents">
-  <table width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+  <table id="listagem" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
   <tr bgcolor="#7ebecc">
 	  <td width="29%" height="25"><span class ="tabelline-tt" >NOME DO ALUNO</span></td>
     <td width="23%" height="25"><span class ="tabelline-tt" >CPF</span></td>
@@ -8,10 +8,10 @@
     <td width="20%" height="25">&nbsp;</td>
   </tr>
 
-  <% @students.each do |student| %>
-    <tr>
-      <td height="25"><span class ="tabelline-pp" ><%=h student.name %></span></td>
-      <td height="25"><span class ="tabelline-pp" ><%=h student.cpf %></span></td>
+  <% @students.each_with_index do |student, index| %>
+    <tr bgcolor=<%= define_color(index) %>>
+      <td height="25"><%=h student.name %></td>
+      <td height="25"><%=h student.cpf %></td>
       <% if can? :update, student %>
         <td height="25"><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_student_path(student) %></td>
       <% end %>

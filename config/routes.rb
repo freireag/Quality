@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :course_classes, :as => "turmas" do |course_class|
     course_class.resources :students, :as => "alunos"
-    course_class.resources :frequencies, :as => "frequencias"
+    course_class.resources :frequencies, :as => "frequencias", :collection => {:change_week => :put}
     course_class.resource :grades, :as => "notas"
     course_class.resources :exams, :as => "avaliacoes" do |exam|
       exam.resources :grades, :as => "notas"

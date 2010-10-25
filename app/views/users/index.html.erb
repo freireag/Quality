@@ -1,29 +1,31 @@
-<h1>Listando usuários</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Login</th>
-    <th>Email</th>
-    <th>Tipo</th>
+<div id="contents">
+  <table id="listagem" class="semBusca" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+  <tr bgcolor="#7ebecc">
+	  <td width="29%" height="25"><span class ="tabelline-tt" >NOME</span></td>
+    <td width="23%" height="25"><span class ="tabelline-tt" >EMAIL</span></td>
+    <td width="23%" height="25"><span class ="tabelline-tt" >LOGIN</span></td>
+    <td width="23%" height="25"><span class ="tabelline-tt" >TIPO</span></td>
+    <td width="14%" height="25">&nbsp;</td>
+    <td width="14%" height="25">&nbsp;</td>
   </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%=h user.name %></td>
-    <td><%=h user.login %></td>
-    <td><%=h user.email %></td>
-    <td><%=h user.role %></td>
-    <td><%= link_to 'Visualizar', user %></td>
-    <% if can? :update, user %>
-      <td><%= link_to 'Editar', edit_user_path(user) %></td>
-    <% end %>
-    <% if can? :destroy, user %>
-      <td><%= link_to 'Remover', user_path(user), :confirm => "Tem certeza?", :method => :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
+  <% @users.each_with_index do |user,index| %>
+    <tr bgcolor=<%= define_color(index) %>>
+      <td><%=h user.name %></td>
+      <td><%=h user.email %></td>
+      <td><%=h user.login %></td>
+      <td><%=h user.role.capitalize %></td>
+      <% if can? :update, user %>
+        <td class="action"><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_user_path(user) %></td>
+      <% end %>
+      <% if can? :destroy, user %>
+        <td class="action"><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), user_path(user), :confirm => "Tem certeza?", :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<div id="rdpitens"></div>
 
 <br />
 
