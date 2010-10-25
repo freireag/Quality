@@ -15,7 +15,7 @@
       <td><%=h course_class.course.name %></td>
       <td><%=h course_class.code %></td>
       <td><%=h course_class.city.name %></td>
-      <td><%=h course_class.start_date %>></td>
+      <td><%=h course_class.start_date %></td>
       <td><%= link_to "Avaliacões", course_class_exams_path(course_class) %>
       <% if can? :update, course_class %>
         <td><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_course_class_path(course_class) %></td>
