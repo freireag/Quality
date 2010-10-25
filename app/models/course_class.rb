@@ -14,6 +14,14 @@ class CourseClass < ActiveRecord::Base
 
   before_create :ensure_end_date_is_after_start_date, :ensure_end_time_is_after_start_time
   after_create :generate_code
+  
+  def self.search(query)
+    if query
+      self.find(:all, :joins => :course, :conditions => "courses.name LIKE '%#{query}%'")
+    else
+      self.all
+    end
+  end
 
   def weekdays=(days)
     self.days_mask = days.inject(0) { |sum, d| sum + (2**WEEKDAYS.index(d)) }

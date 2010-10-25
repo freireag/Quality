@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
       @course_class = CourseClass.find(params[:course_class_id])
       @students = @course_class.students
     else
-      @students = Student.all
+      @students = Student.search(params[:q])
     end
 
     respond_to do |format|

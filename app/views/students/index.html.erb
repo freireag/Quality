@@ -9,7 +9,7 @@
   </tr>
 
   <% @students.each_with_index do |student, index| %>
-    <tr bgcolor=<%= define_color(index) %>>
+    <tr bgcolor="<%= define_color(index) %>">
       <td height="25"><%=h student.name %></td>
       <td height="25"><%=h student.cpf %></td>
       <% if can? :update, student %>

@@ -21,6 +21,14 @@ class Student < ActiveRecord::Base
   #validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :within => 6..20, :allow_blank => true
+  
+  def self.search(query)
+    if query
+      self.find(:all, :conditions => "name LIKE '%#{query}%'")
+    else
+      self.all
+    end
+  end
 
   def is_registered?(course_class)
     self.course_classes.map(&:id).include? course_class.id
