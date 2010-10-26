@@ -22,13 +22,11 @@
         <tr bgcolor="<%= define_color(index+1) %>">
           <td width="193" height="25"><span class ="tabelline-pp"><%=h student.name %></span></td>
           <td height="25"><span class ="tabelline-pp"><%=h student.cpf %></span></td>
-          <% @exams.theoric.map(&:id).each do |id| %>
+          <% exams = @exams.theoric + @exams.practical %>
+          <% exams.map(&:id).each do |id| %>
             <td height="25" align="center"><span class="tabelline-pp"><%=h student.grade(id).try(:grade) %></span></td>
           <% end %>
-          <% @exams.practical.map(&:id).each do |id| %>
-            <td height="25" align="center"><span class="tabelline-pp"><%=h student.grade(id).try(:grade) %></span></td>
-          <% end %>
-          <td height="25" align="center"><span class="tabelline-pp"><%=h student.grade(@exams.concept.first.id).try(:grade) %></span></td>
+          <td height="25" align="center"><span class="tabelline-pp"><%=h student.grade(@exams.concept.first.try(:id)).try(:grade) %></span></td>
           <td height="25" align="center"><span class="tabelline-pp"><%= student.final_grade(@course_class).round(2) %></span></td>
         </tr>
       <% end %>
