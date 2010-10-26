@@ -1,32 +1,37 @@
-<h1>Listando notas</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <% @exams.theoric.each do |exam| %>
-      <th><%=h exam.name %></th>
-    <% end %>
-    <% @exams.practical.each do |exam| %>
-      <th><%=h exam.name %></th>
-    <% end %>
-    <th>C</th>
-    <th>MÉDIA</th>
-  </tr>
-
-<% @students.each do |student| %>
-  <tr>
-    <td><%=h student.name %></td>
-    <% @exams.theoric.map(&:id).each do |id| %>
-      <td><%=h student.grade(id).try(:grade)  %></td>
-    <% end %>
-    <% @exams.practical.map(&:id).each do |id| %>
-      <td><%=h student.grade(id).try(:grade)  %></td>
-    <% end %>
-    <td><%=h student.grade(@exams.concept.first.id).try(:grade) %></td>
-    <td><%= student.final_grade(@course_class) %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
+<div id="contents">
+  <div id="tab-notas">
+    <table id="listagem" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+      <tr bgcolor="#7ebecc">
+        <td height="31" colspan="2" border="0" style="background: url(/images/topturma.gif) #E8F7FB  no-repeat bottom left; color: #FFF; font-size: 10px; padding-left:5px; font-weight:bold"><%=h @course_class.code %></td>
+        <td colspan="<%= [@exams.theoric.count,1].max %>" style="text-align:center"><span class="tabelline-tt">AV. TE&Oacute;RICA</span></td>
+        <td colspan="<%= [@exams.practical.count,1].max %>" style="text-align:center"><span class="tabelline-tt">AV. PR&Aacute;TICA</span></td>
+        <td width="59" rowspan="2" style="text-align: center"><span class="tabelline-tt">CONCEITO</span></td>
+        <td width="40" rowspan="2" style="text-align: center"><span class="tabelline-tt">M&Eacute;DIA FINAL</span></td>
+      </tr>
+      <tr bgcolor="#c2d7dd" style="text-align:left">
+        <td width="193" height="25"><span class="tabelline-tt">NOME DO ALUNO</span></td>
+        <td width="130" height="25"><span class="tabelline-tt">CPF</span></td>
+        <% @exams.theoric.each do |exam| %>
+          <td height="25" style="text-align: center"><span class="tabelline-tt">AT<%=h exam.exam_order %></span></td>
+        <% end %>
+        <% @exams.practical.each do |exam| %>
+          <td height="25" style="text-align: center"><span class="tabelline-tt">AP<%=h exam.exam_order %></span></td>
+        <% end %>
+      </tr>
+      <% @students.each_with_index do |student,index| %>
+        <tr bgcolor="<%= define_color(index+1) %>">
+          <td width="193" height="25"><span class ="tabelline-pp"><%=h student.name %></span></td>
+          <td height="25"><span class ="tabelline-pp"><%=h student.cpf %></span></td>
+          <% @exams.theoric.map(&:id).each do |id| %>
+            <td height="25" align="center"><span class="tabelline-pp"><%=h student.grade(id).try(:grade) %></span></td>
+          <% end %>
+          <% @exams.practical.map(&:id).each do |id| %>
+            <td height="25" align="center"><span class="tabelline-pp"><%=h student.grade(id).try(:grade) %></span></td>
+          <% end %>
+          <td height="25" align="center"><span class="tabelline-pp"><%=h student.grade(@exams.concept.first.id).try(:grade) %></span></td>
+          <td height="25" align="center"><span class="tabelline-pp"><%= student.final_grade(@course_class).round(2) %></span></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

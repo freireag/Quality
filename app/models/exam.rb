@@ -1,6 +1,8 @@
 class Exam < ActiveRecord::Base
   TYPES = %w[teórica prática]
 
+  default_scope :order => :exam_order
+
   has_many :grades
   has_many :students, :through => :grades
   belongs_to :course_class

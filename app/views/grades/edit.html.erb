@@ -1,31 +1,49 @@
-<h1>Listando notas</h1>
-
-<% form_for :grades, :url => {:action => :update}, :html => {:method => :put} do |form| %>
-  <table>
-    <tr>
-      <th></th>
-      <% @exams.each do |exam| %>
-        <th><%=h exam.name %></th>
-      <% end %>
-    </tr>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%=h student.name %></td>
-        <% @exams.map(&:id).each do |exam_id| %>
-          <td>
-            <% grade = student.grade(exam_id) %>
-            <% fields_for :grades,  grade do |fields| %>
-              <%= hidden_field_tag "grades[id][]", grade.try(:id) %>
-              <%= hidden_field_tag "grades[exam_id][]", exam_id %>
-              <%= hidden_field_tag "grades[student_id][]", student.id %>
-              <%= text_field_tag "grades[grade][]", grade.try(:grade), :size => 5 %>
-            <% end %>
-          </td>
+<div id="contents">
+  <div id="tab-notas">
+    <table id="listagem" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
+      <tr bgcolor="#7ebecc">
+        <td height="31" colspan="2" border="0" style="background: url(/images/topturma.gif) #E8F7FB  no-repeat bottom left; color: #FFF; font-size: 10px; padding-left:5px; font-weight:bold"><%=h @course_class.code %></td>
+        <td colspan="<%= [@exams.theoric.count,1].max %>" style="text-align:center"><span class="tabelline-tt">AV. TE&Oacute;RICA</span></td>
+        <td colspan="<%= [@exams.practical.count,1].max %>" style="text-align:center"><span class="tabelline-tt">AV. PR&Aacute;TICA</span></td>
+        <td width="59" rowspan="2" style="text-align: center"><span class="tabelline-tt">CONCEITO</span></td>
+      </tr>
+      <tr bgcolor="#c2d7dd" style="text-align:left">
+        <td width="193" height="25"><span class="tabelline-tt">NOME DO ALUNO</span></td>
+        <td width="130" height="25"><span class="tabelline-tt">CPF</span></td>
+        <% @exams.theoric.each do |exam| %>
+          <td height="25" style="text-align: center"><span class="tabelline-tt">AT<%=h exam.exam_order %></span></td>
+        <% end %>
+        <% @exams.practical.each do |exam| %>
+          <td height="25" style="text-align: center"><span class="tabelline-tt">AP<%=h exam.exam_order %></span></td>
         <% end %>
       </tr>
-    <% end %>
-  </table>
-  <br />
-  <%= form.submit "Enviar" %>
-<% end %>
-
+      <% form_for :grades, :url => {:action => :update}, :html => {:method => :put} do |form| %>
+        <% @students.each_with_index do |student,index| %>
+          <tr bgcolor="<%= define_color(index+1) %>">
+            <td width="193" height="25"><span class ="tabelline-pp"><%=h student.name %></span></td>
+            <td height="25"><span class ="tabelline-pp"><%=h student.cpf %></span></td>
+            <% exams = @exams.theoric + @exams.practical + @exams.concept %>
+            <% exams.map(&:id).each do |exam_id| %>
+              <td align="center">
+                <% grade = student.grade(exam_id) %>
+                <% fields_for :grades,  grade do |fields| %>
+                  <%= hidden_field_tag "grades[id][]", grade.try(:id) %>
+                  <%= hidden_field_tag "grades[exam_id][]", exam_id %>
+                  <%= hidden_field_tag "grades[student_id][]", student.id %>
+                  <%= text_field_tag "grades[grade][]", grade.try(:grade), :size => 2 %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td colspan="<%= [@exams.theoric.count,1].max + [@exams.practical.count,1].max + 1 %>" bgcolor="#7ebecc" align="center">
+            <%= form.submit "Cadastrar notas" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

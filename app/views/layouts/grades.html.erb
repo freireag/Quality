@@ -1,0 +1,18 @@
+<div id="call-alunos">NOTAS</div>
+
+  <div id="buscar_frequencia">
+    <form style="margin:0;padding:0;" method="post" name="buscaralunos">
+      <div id="impttext_frequencia"><input name="textfied2" type="text" id="textfield2" size="32" /></div>
+        <div id="imptbotao"><input type="image" src="/images/btbuscar.png"/></div>
+      <div id="escolha-a">Curso</div>
+      <div id="dadosline-select-c"><a href="#"><img src="/images/select.gif" width="18" height="18" alt="Selecionar" align="right" border="0"/></a></div>
+      <div id="escolha-b">Turma</div>
+      <div id="dadosline-select-d"><a href="#"><img src="/images/select.gif" width="18" height="18" alt="Selecionar" align="right" border="0"/></a></div>
+    </form>
+  </div>
+
+  <%= yield %>
+
+</div>
+
+<% parent_layout 'application' %>

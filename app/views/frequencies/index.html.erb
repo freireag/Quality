@@ -51,7 +51,7 @@
               <tr bgcolor="<%= define_color(index) %>" align="center">
                 <% @days.each do |day| %>
                   <% frequency = find_frequency(@course_class, student, day) %>
-                  <td>
+                  <td height="25">
                     <%= check_box_tag 'frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}", (:checked unless frequency.nil?) %>
                     <% unless frequency.nil? %>
                       <%= hidden_field_tag 'remove_frequencies[]', "#{student.id}##{day.strftime('%Y-%m-%d')}" %>
