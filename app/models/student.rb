@@ -37,6 +37,28 @@ class Student < ActiveRecord::Base
   def grade(exam_id)
     Grade.find(:first, :conditions => ["student_id = :s AND exam_id = :e", {:s => self.id, :e => exam_id}])
   end
+  
+  def final_grade(course_class)
+    grades = Grade.of_class(course_class.id).of_student(self.id)
+    theoric_grades = grades.theoric.map(&:grade)
+    if theoric_grades.count == 0
+      theoric_average = 0
+    else
+      theoric_sum = theoric_grades.inject { |sum,g| sum + g }
+      theoric_average = theoric_sum / theoric_grades.count
+    end
+    practical_grades = grades.practical.map(&:grade)
+    if practical_grades.count == 0
+      practical_average = 0
+    else
+      practical_sum = practical_grades.inject { |sum,g| sum + g }
+      practical_average = practical_sum / practical_grades.count
+    end
+    concept_grade = grades.concept.first.try(:grade)
+    concept_grade = 0  if concept_grade == nil
+    final_grade = theoric_average * 0.3 + practical_average * 0.6 + concept_grade * 0.1
+    final_grade
+  end
 
   def courses
     Course.find(self.course_classes.map(&:course_id))

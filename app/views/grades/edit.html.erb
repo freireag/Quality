@@ -18,7 +18,7 @@
               <%= hidden_field_tag "grades[id][]", grade.try(:id) %>
               <%= hidden_field_tag "grades[exam_id][]", exam_id %>
               <%= hidden_field_tag "grades[student_id][]", student.id %>
-              <%= text_field_tag "grades[grade][]", grade.try(:grade) %>
+              <%= text_field_tag "grades[grade][]", grade.try(:grade), :size => 5 %>
             <% end %>
           </td>
         <% end %>

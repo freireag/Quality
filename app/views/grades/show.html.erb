@@ -3,17 +3,27 @@
 <table>
   <tr>
     <th></th>
-    <% @exams.each do |exam| %>
+    <% @exams.theoric.each do |exam| %>
       <th><%=h exam.name %></th>
     <% end %>
+    <% @exams.practical.each do |exam| %>
+      <th><%=h exam.name %></th>
+    <% end %>
+    <th>C</th>
+    <th>MÉDIA</th>
   </tr>
 
 <% @students.each do |student| %>
   <tr>
     <td><%=h student.name %></td>
-    <% @exams.map(&:id).each do |id| %>
+    <% @exams.theoric.map(&:id).each do |id| %>
       <td><%=h student.grade(id).try(:grade)  %></td>
     <% end %>
+    <% @exams.practical.map(&:id).each do |id| %>
+      <td><%=h student.grade(id).try(:grade)  %></td>
+    <% end %>
+    <td><%=h student.grade(@exams.concept.first.id).try(:grade) %></td>
+    <td><%= student.final_grade(@course_class) %></td>
   </tr>
 <% end %>
 </table>

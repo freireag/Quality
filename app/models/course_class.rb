@@ -13,7 +13,7 @@ class CourseClass < ActiveRecord::Base
   validates_numericality_of :number, :greater_than => 0
 
   before_create :ensure_end_date_is_after_start_date, :ensure_end_time_is_after_start_time
-  after_create :generate_code
+  after_create :generate_code, :create_exam
   
   def self.search(query)
     if query
@@ -75,6 +75,10 @@ class CourseClass < ActiveRecord::Base
     ENWEEKDAYS.reject do |d|
       ((days_mask || 0) & 2**ENWEEKDAYS.index(d)).zero?
     end
+  end
+  
+  def create_exam
+    Exam.create(:name => "C", :exam_type => "conceito", :exam_order => 1, :course_class_id => self.id)
   end
 end
 
