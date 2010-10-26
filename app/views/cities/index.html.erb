@@ -1,33 +1,30 @@
 <div id="contents">
   <table id="listagem" class="semBusca" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
-  <tr bgcolor="#7ebecc">
-	  <td width="29%" height="25"><span class ="tabelline-tt" >CIDADE</span></td>
-    <td width="23%" height="25"><span class ="tabelline-tt" >ESTADO</span></td>
-    <td width="23%" height="25"><span class ="tabelline-tt" >CÓDIGO</span></td>
-    <td width="14%" height="25">&nbsp;</td>
-    <td width="14%" height="25">&nbsp;</td>
-  </tr>
-
-  <% @cities.each_with_index do |city, index| %>
-    <tr bgcolor=<%= define_color(index) %>>
-      <td><%=h city.name %></td>
-      <td><%=h city.state %></td>
-      <td><%=h city.code %></td>
-      <% if can? :update, city %>
-        <td class="action"><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_city_path(city) %></td>
-      <% end %>
-      <% if can? :destroy, city %>
-        <td class="action"><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), city, :confirm => 'Tem certeza?', :method => :delete %></td>
-      <% end %>
+    <tr bgcolor="#7ebecc">
+	    <td width="29%" height="25"><span class ="tabelline-tt" >CIDADE</span></td>
+      <td width="23%" height="25"><span class ="tabelline-tt" >ESTADO</span></td>
+      <td width="23%" height="25"><span class ="tabelline-tt" >CÓDIGO</span></td>
+      <td width="14%" height="25">&nbsp;</td>
+      <td width="14%" height="25">&nbsp;</td>
     </tr>
-  <% end %>
+
+    <% @cities.each_with_index do |city, index| %>
+      <tr bgcolor=<%= define_color(index) %>>
+        <td><%=h city.name %></td>
+        <td><%=h city.state %></td>
+        <td><%=h city.code %></td>
+        <% if can? :update, city %>
+          <td class="action"><%= link_to image_tag("editar.png", :size => "85x18", :border => 0), edit_city_path(city) %></td>
+        <% end %>
+        <% if can? :destroy, city %>
+          <td class="action"><%= link_to image_tag("excluir.png", :size => "85x18", :border => 0), city, :confirm => 'Tem certeza?', :method => :delete %></td>
+        <% end %>
+      </tr>
+    <% end %>
   </table>
+  <br />
+  <% if can? :create, @cities %>
+    <%= link_to 'Nova cidade', new_city_path %>
+  <% end %>
 </div>
 <div id="rdpitens"></div>
-
-<br />
-
-<% if can? :create, @cities %>
-  <%= link_to 'Nova cidade', new_city_path %>
-<% end %>
-

@@ -2,7 +2,7 @@ class ExamsController < ApplicationController
   before_filter :find_course_class
 
   def index
-    @exams = @course_class.exams.find(:all, :order => "exam_order ASC")
+    @exams = @course_class.exams.find(:all, :order => "exam_type DESC, exam_order ASC")
   end
 
   def new
