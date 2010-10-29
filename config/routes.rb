@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :notifications, :as => "avisos"
+
   map.dashboard 'dashboard', :controller => :dashboard, :action => :index
 
   map.resources :frequencies, :as => "frequencias"

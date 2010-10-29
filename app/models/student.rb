@@ -7,6 +7,7 @@ class Student < ActiveRecord::Base
   has_many :frequencies
   has_many :grades
   has_many :exams, :through => :grades
+  has_one :notification
 
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable, :registerable, :validatable and :activatable

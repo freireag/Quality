@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_id: 1
+  last_sended: 2010-10-29
+  days: 1
+
+two:
+  student_id: 1
+  last_sended: 2010-10-29
+  days: 1
