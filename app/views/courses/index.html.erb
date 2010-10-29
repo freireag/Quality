@@ -1,3 +1,12 @@
+<div id="call-alunos">CURSOS</div>
+
+<div id="buscar_cursos">
+  <% form_tag courses_path, :method => :get do %>
+    <div id="impttext_alunos"><%= text_field_tag :q, nil, :size => 57 %></div>
+    <div id="imptbotao"><%= image_submit_tag "btbuscar.png" %></div>
+  <% end %>
+</div>
+
 <div id="contents">
   <table id="listagem" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
   <tr bgcolor="#7ebecc">
@@ -24,9 +33,9 @@
     </tr>
   <% end %>
   </table>
+  <br />
+  <% if can? :create, @courses %>
+    <%= link_to image_tag("novo.png", :border => 0), new_course_path %>
+  <% end %>
 </div>
-<div id="rdpitens"></div>
-<% if can? :create, @courses %>
-  <%= link_to 'Novo curso', new_course_path %>
-<% end %>
-
+</div>

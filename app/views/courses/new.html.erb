@@ -1,28 +1,5 @@
-<h1>Novo curso</h1>
-
-<% form_for(@course) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </p>
-  <p>
-    <%= f.label :credit_hours %><br />
-    <%= f.text_field :credit_hours %>
-  </p>
-  <p>
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </p>
-  <p>
-    <%= f.submit 'Cadastrar' %>
-  </p>
-<% end %>
-
-<%= link_to 'Voltar', courses_path %>
-
+<div id="call-alunos">CADASTRAR CURSO</div>
+<div id="contents">
+<%= render :partial => "form" %>
+</div>
+</div>
