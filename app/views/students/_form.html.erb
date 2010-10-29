@@ -1,0 +1,40 @@
+<% form_for @student, :html => {:id => "cadastro"} do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <label>Nome</label>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <label>E-mail</label>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <label>Telefone</label>
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <label>RG</label>
+    <%= f.text_field :rg %>
+  </p>
+  <p>
+    <label>CPF</label>
+    <%= f.text_field :cpf %>
+  </p>
+  <p>
+    <label>Naturalidade</label>
+    <%= f.text_field :birthplace %>
+  </p>
+  <p>
+    <label>Nascimento</label>
+    <%= f.date_select :birthdate, :start_year => 1900, :end_year => 2000 %>
+  </p>
+  <p>
+    <label>Estado Civil</label>
+    <%= f.select :marital_status, Student::MARITAL_STATUS.invert %>
+  </p>
+  <p>
+    <%= link_to image_tag("voltar.png", :border => 0), students_path %>
+    <%= image_submit_tag 'cadastrar.png', :id => "bt_form" %> 
+  </p>
+<% end %>

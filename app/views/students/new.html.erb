@@ -1,44 +1,6 @@
-<h1>Novo estudante</h1>
-
-<% form_for(@student) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </p>
-  <p>
-    <%= f.label :rg %><br />
-    <%= f.text_field :rg %>
-  </p>
-  <p>
-    <%= f.label :cpf %><br />
-    <%= f.text_field :cpf %>
-  </p>
-  <p>
-    <%= f.label :birthplace %><br />
-    <%= f.text_field :birthplace %>
-  </p>
-  <p>
-    <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate, :start_year => 1900, :end_year => 2000 %>
-  </p>
-  <p>
-    <%= f.label :marital_status %><br />
-    <%= f.select :marital_status, Student::MARITAL_STATUS.invert %>
-  </p>
-  <p>
-    <%= f.submit 'Cadastrar' %>
-  </p>
-<% end %>
-
-<%= link_to 'Voltar', students_path %>
+<div id="call-alunos">CADASTRAR ALUNO</div>
+<div id="contents">
+<%= render :partial => "form" %>
+</div>
+</div>
 

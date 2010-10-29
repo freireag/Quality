@@ -26,6 +26,18 @@ body  {
 	.qw #contents { width: 638px; background: url(../images/tira-bgpitens.gif); padding: 0 12px 20px 20px }
 	.qw #contents, #dadosdocurso, #dadosdoaluno { clear: both; margin: 0  }
 	
+	/*Tabelas de listagens*/
+	.qw #contents table.semBusca{ margin-top:15px; }
+	.qw #contents table#listagem{ width: 100%; border-color: #74adc0; border: 0; }
+	.qw #contents table#listagem thead th{ background-color: #7ebecc; color:#036; padding: 10px; font-size:10px; font-weight:bold; text-align:left; }
+	.qw #contents table#listagem thead th.action{width:85px; padding:0;}
+	.qw #contents table#listagem tbody tr td{ font-size:11px; font-weight:normal; color:#036; padding: 5px; }
+	.qw #contents table#listagem tbody tr td.action{text-align:center; padding:0;}
+	
+	/*Paginação de listagem*/
+	#paginacao{ margin: 15px 0 0; }
+	#paginacao a{}
+	
 	.qw #dadosdocurso { height: 195px; background:url(../images/bgcadastraralunos.gif) }
 	.qw #dadosdoaluno { height: 316px; background:url(../images/bgcadastrarcursos.gif) }
 		.qw #dadosdocurso, #dadosdoaluno  { width: 562px; padding: 36px 80px 0 28px }
@@ -75,13 +87,6 @@ body  {
 
 
 	.qw #rdpitens { width: 670px; height: 20px; background: url(../images/rdpitens.gif) bottom; margin-bottom: 25px; clear:both }
-
-    .qw form#cadastro { margin: 0 30px; padding-top: 10px; }
-		.qw form#cadastro label{ width: 110px; float:left; font-size: 12px; color: #125c7d; }
-		.qw form#cadastro input{ background:url(../images/bg_input.png) no-repeat; width: 327px; height: 15px; padding: 5px; border:0; color: #006699; font-size: 12px; }
-		.qw form#cadastro select{ padding: 3px; }
-		.qw form#cadastro input#bt_form, 
-		.qw form#cadastro input[type=checkbox]{ width: auto; height:auto; padding:0; background:none; }
 
 		.qw #call-alunos { margin: 0 490px 0 6px; } 
 		.qw #call-cadastrar { margin: 0 490px 0 6px; }  
