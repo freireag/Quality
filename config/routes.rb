@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :notifications, :as => "avisos"
+  map.resources :notifications, :as => "avisos", :collection => {:payment => :put}
 
   map.dashboard 'dashboard', :controller => :dashboard, :action => :index
 

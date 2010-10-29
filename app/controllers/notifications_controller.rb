@@ -3,6 +3,7 @@ class NotificationsController < ApplicationController
   # GET /notifications.xml
   def index
     @notifications = Notification.all
+    @students = Student.search(params[:q])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,5 +81,18 @@ class NotificationsController < ApplicationController
       format.html { redirect_to(notifications_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def payment
+    @student = Student.find(params[:student_id])
+    unless @student.email.empty?
+      if NotificationMailer.deliver_payment_email(@student)
+        flash[:notice] = "Email enviado com sucesso"
+      end
+    else
+      flash[:error] = "O aluno não possui email cadastrado"
+    end
+      
+    redirect_to notifications_path
   end
 end
