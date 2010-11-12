@@ -15,6 +15,9 @@ class CourseClass < ActiveRecord::Base
   before_create :ensure_end_date_is_after_start_date, :ensure_end_time_is_after_start_time
   after_create :generate_code, :create_exam
   
+  named_scope :of_course, lambda { |course_id| { :conditions => { :course_id => course_id } } }
+
+  
   def self.search(query)
     if query
       self.find(:all, :joins => :course, :conditions => "courses.name LIKE '%#{query}%'")

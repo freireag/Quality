@@ -47,7 +47,7 @@ class AdminFilesController < ApplicationController
 
     respond_to do |format|
       if @admin_file.save
-        format.html { redirect_to(@admin_file, :notice => 'AdminFile was successfully created.') }
+        format.html { redirect_to(admin_files_path, :notice => 'AdminFile was successfully created.') }
         format.xml  { render :xml => @admin_file, :status => :created, :location => @admin_file }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class AdminFilesController < ApplicationController
 
     respond_to do |format|
       if @admin_file.update_attributes(params[:admin_file])
-        format.html { redirect_to(@admin_file, :notice => 'AdminFile was successfully updated.') }
+        format.html { redirect_to(admin_files_path, :notice => 'AdminFile was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -22,6 +22,7 @@ body  {
 .qw #sidebar {float: left; height: 820px; width: 230px;margin: 0 0 0 40px; padding: 0; background: url(../images/menulateral.png) no-repeat center }
 
 .qw #main, #contents { heigth: auto; background-color: #FFF }
+#contents {background-color: #E8F7FC}
 	.qw #main { width: 670px; float: left; padding: 0; margin: 0 }
 	.qw #contents { width: 638px; background: url(../images/tira-bgpitens.gif); padding: 0 12px 20px 20px }
 	.qw #contents, #dadosdocurso, #dadosdoaluno { clear: both; margin: 0  }
@@ -100,12 +101,24 @@ body  {
 					font-size: 12px;
 					height: 15px
 	}
-
+	
+    .qw #buscar { height: 50px; width: 634px; clear: both; padding: 11px 0 0 20px; margin: 10px auto 0; background: url(../images/bg_busca.png) no-repeat; }
+    .qw #buscar p {margin:0; color:#FFF; font-size: 11px;}
+    .qw #buscarDiv { height: 53px; width: 634px; clear: both; padding: 8px 0 0 20px; margin: 10px 0 0 -10px; background: url(../images/bg_busca2.png) no-repeat; }
+    .qw #colunaBuscaEsq{ float: left; width: 280px; padding-top: 3px; }
+		.qw #colunaBuscaDir{ float: right; width: 340px; }
+		.qw #buscar p, .qw #buscarDiv p{margin:0; color:#FFF; font-size: 11px;}
 		.qw #buscar_alunos, #buscar_frequencia, #buscar_boletos, #buscar_cursos { height: 22px; padding: 0; clear: both; padding: 27px 0 27px 20px }
 		.qw #buscar_alunos { background: url(../images/buscaralunos.png)}
 		.qw #buscar_cursos { background: url(../images/buscarcursos.png)}
 		.qw #buscar_frequencia {  background: url(../images/topofrequencia.png)}
 		.qw #buscar_boletos {  background: url(../images/topoboletos.png)}
+		
+		.qw #buscaFreq{ float:left; }
+		.qw #buscaFreq thead th{ font-size: 9px; text-align: left; color: #069; font-weight: normal; }
+		.qw #colunaBuscaDir input{ margin-top: 20px; }
+		.qw #colunaBuscaDir .boxCurso{ width: 150px; }
+		.qw #colunaBuscaDir .boxTurma{ width: 80px; }
 		
 			.qw #frequencia-box { width: 338px; padding-top: 35px }
 			.qw #datas-box {width: 300px }
@@ -130,6 +143,9 @@ body  {
 		.qw #escolha-b { margin-right: 0 }
 		.qw #escolha-c { margin-left: 38px }
 		.qw #escolha-a, #escolha-b, #escolha-c { width: 94px; height: 18px; font-size: 9px; text-align: left; color: #069; margin-top: 4px; float:left }
+		
+		.qw #impttext_frequencia { width:189px; float:left; }
+		.qw #impttext_frequencia input{ background:url(../images/bg_field_busca2.png) no-repeat; padding: 5px; width: 179px; height: 15px; border: 0;  color: #069; font-size: 9px; }
 		
 		
 	.qw #avisosnome { height: 20px; padding: 4px 0 0 0 }

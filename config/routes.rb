@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :grades, :as => "notas"
+
   map.resources :notifications, :as => "avisos", :collection => {:payment => :put}
 
   map.dashboard 'dashboard', :controller => :dashboard, :action => :index

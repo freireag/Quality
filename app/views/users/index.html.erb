@@ -1,3 +1,5 @@
+<div id="call-alunos">USUÁRIOS</div>
+
 <div id="contents">
   <table id="listagem" class="semBusca" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
   <tr bgcolor="#7ebecc">
@@ -24,12 +26,12 @@
     </tr>
   <% end %>
   </table>
+  <% if can? :create, @users %>
+    <br />
+    <%= link_to image_tag("novo.png", :border => 0), new_user_path %>
+  <% end %>
 </div>
-<div id="rdpitens"></div>
+</div>
 
 <br />
-
-<% if can? :create, @users %>
-  <%= link_to 'Novo usuário', new_user_path %>
-<% end %>
 

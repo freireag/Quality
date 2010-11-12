@@ -1,3 +1,5 @@
+<div id="call-alunos">CIDADES</div>
+
 <div id="contents">
   <table id="listagem" class="semBusca" border="0" cellpadding="1" cellspacing="1" bordercolor="#74adc0">
     <tr bgcolor="#7ebecc">
@@ -24,7 +26,7 @@
   </table>
   <br />
   <% if can? :create, @cities %>
-    <%= link_to 'Nova cidade', new_city_path %>
+    <%= link_to image_tag("novo.png", :border => 0), new_city_path %>
   <% end %>
 </div>
-<div id="rdpitens"></div>
+</div>

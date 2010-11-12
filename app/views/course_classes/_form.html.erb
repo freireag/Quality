@@ -1,47 +1,48 @@
-<% form_for(@course_class) do |f| %>
+<% form_for(@course_class, :html => {:id => "cadastro"}) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :number %><br />
-    <%= f.text_field :number %>
-  </p>
-  <p>
-    <%= f.label :start_time %><br />
-    <%= f.time_select :start_time %>
-  </p>
-  <p>
-    <%= f.label :end_time %><br />
-    <%= f.time_select :end_time %>
-  </p>
-  <p>
-    <%= f.label :start_date %><br />
-    <%= f.date_select :start_date %>
-  </p>
-  <p>
-    <%= f.label :end_date %><br />
-    <%= f.date_select :end_date %>
-  </p>
-  <p>
-    <%= f.label :course %><br />
+    <%= f.label :course %>
     <%= f.collection_select (:course_id, Course.all, :id, :name) %>
   </p>
   <p>
-    <%= f.label :city %><br />
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :city %>
     <%= f.collection_select (:city_id, City.ordered_by_state, :id, :name_with_state) %>
   </p>
   <p>
-    <%= f.label :weekdays %><br />
+    <label>Horário Início</label>
+    <%= f.time_select :start_time %>
+  </p>
+  <p>
+    <label>Horário Término</label>
+    <%= f.time_select :end_time %>
+  </p>
+  <p>
+    <%= f.label :start_date %>
+    <%= f.date_select :start_date %>
+  </p>
+  <p>
+    <%= f.label :end_date %>
+    <%= f.date_select :end_date %>
+  </p>
+  <p>
+    <%= f.label :weekdays %>
     <% for day in CourseClass::WEEKDAYS %>
     <%= check_box_tag "course_class[weekdays][]", day, @course_class.weekdays.include?(day) %>
-      <%=h day.humanize %><br />
+    <%=h day.gsub(/á/,  'a')[0..2].humanize %>
     <% end %>
   </p>
   <p>
-    <%= f.label :observation %><br />
-    <%= f.text_area :observation %>
+    <label style="padding-top: 40px">Observacão</label>
+    <%= f.text_area :observation, :cols => 45, :rows => 5 %>
   </p>
   <p>
-    <%= f.submit 'Cadastrar' %>
+    <%= link_to image_tag("voltar.png", :border => 0), course_classes_path %>
+    <%= image_submit_tag 'cadastrar.png', :id => "bt_form" %> 
   </p>
 <% end %>
 

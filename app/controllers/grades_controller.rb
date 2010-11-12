@@ -1,6 +1,11 @@
 class GradesController < ApplicationController
   before_filter :find_course_class
 
+  def index
+    @exams = @course_class.exams
+    @students = @course_class.students
+  end
+
   def show
     @exams = @course_class.exams
     @students = @course_class.students

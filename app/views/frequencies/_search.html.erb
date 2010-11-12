@@ -1,0 +1,28 @@
+<div id="buscarDiv">
+  <% form_tag frequencies_path, :method => :get do %>
+    <div id="colunaBuscaEsq">
+        <p>Digite o CPF do aluno:</p>
+        <div id="impttext_frequencia"><%= text_field_tag :q, nil, :size => 57 %></div>
+        <div id="imptbotao"><%= image_submit_tag "btbuscar.png" %></div>
+    </div>
+    <div id="colunaBuscaDir">
+      <table id="buscaFreq">
+        <thead>
+          <tr>
+            <th>Curso</th>
+            <th></th>
+            <th>Turma</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= select_tag :course_id, options_for_select(Course.all.collect {|c| [c.name, c.id]}, :selected => get_selected_course), :class => "boxCurso", :onchange => "this.form.submit();" %></td>
+            <td><img src="/images/mais.png"></td>
+            <td><%= select_tag :course_class_id, options_for_select(CourseClass.of_course(get_course_id).collect {|c| [c.code, c.id]}, :selected => get_selected_class), :class => "boxTurma" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= image_submit_tag 'btbuscar.png' %>
+    </div>
+  <% end %>
+</div>
